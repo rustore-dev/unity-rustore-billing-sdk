@@ -1,7 +1,8 @@
+# RuStore Unity SDK для in-app платежей
 
-[Документация по интеграции SDK.](https://help.rustore.ru/rustore/for_developers/developer-documentation/sdk_payments/sdk_payments_unity)
+## [Документация Unity SDK для in-app платежей.](https://help.rustore.ru/rustore/for_developers/developer-documentation/sdk_payments/sdk_payments_unity)
 
-Пример интеграции SDK.
+### Пример внедрения SDK.
 
 Импортируйте пакет Example/RuStoreBillingSDKExample.unitypackage в новый проект Unity.
 
