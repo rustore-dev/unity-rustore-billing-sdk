@@ -1,6 +1,6 @@
 # RuStore Unity SDK для in-app платежей
 
-## [Документация Unity SDK для in-app платежей.](https://help.rustore.ru/rustore/for_developers/developer-documentation/sdk_payments/sdk_payments_unity)
+## [Документация RuStore Unity SDK для in-app платежей.](https://help.rustore.ru/rustore/for_developers/developer-documentation/sdk_payments/sdk_payments_unity)
 
 ### Пример внедрения SDK.
 
