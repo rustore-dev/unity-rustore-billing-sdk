@@ -8,7 +8,7 @@ namespace RuStore.BillingClient {
 
     public class RuStoreBillingClient {
 
-        public static string PluginVersion = "2.2.1";
+        public static string PluginVersion = "3.1.0";
 
         private static RuStoreBillingClient _instance;
         private static bool _isInstanceInitialized;
@@ -157,6 +157,22 @@ namespace RuStore.BillingClient {
 
             var listener = new DeletePurchaseResponseListener(onFailure, onSuccess);
             _clientWrapper.Call("deletePurchase", purchaseId, listener);
+        }
+
+        public void SetTheme(BillingClientTheme theme) {
+            if (!IsPlatformSupported((error) => { })) {
+                return;
+            }
+
+            _clientWrapper.Call("setThemeCode", (int)theme);
+        }
+
+        public BillingClientTheme GetTheme() {
+            if (!IsPlatformSupported((error) => { })) {
+                return BillingClientTheme.Light;
+            }
+
+            return (BillingClientTheme)_clientWrapper.Call<int>("getThemeCode");
         }
 
         private void InitWrapper() {
