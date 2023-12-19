@@ -1,8 +1,8 @@
 <dependencies>
     <androidPackages>
-        <androidPackage spec="ru.rustore.sdk:billingclient:2.2.0-QA">
+        <androidPackage spec="ru.rustore.sdk:billingclient:2.2.0">
             <repositories>
-                <repository>../AndroidLibs/repo</repository>
+                <repository>https://artifactory-external.vkpartner.ru/artifactory/maven</repository>
             </repositories>
         </androidPackage>
         <androidPackage spec="androidx.lifecycle:lifecycle-viewmodel:2.5.1" />
