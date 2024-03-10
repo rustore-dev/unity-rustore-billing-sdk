@@ -7,7 +7,7 @@ namespace RuStore.Example {
 
     public class ExampleController : MonoBehaviour {
 
-        public const string ExampleVersion = "0.1.0";
+        public const string ExampleVersion = "0.2.0";
 
         [SerializeField]
         private string[] _productIds;
@@ -53,7 +53,7 @@ namespace RuStore.Example {
                     if (result.isAvailable) {
                         LoadProducts();
                     } else {
-                        _messageBox.Show("Error", result.cause.description);
+                        _messageBox.Show("Error", result.cause.description, LoadProducts);
                         OnError(result.cause);
                     }
                 });
@@ -117,12 +117,10 @@ namespace RuStore.Example {
 
             var viewIndex = 0;
             foreach (var purchase in purchases) {
-                if (purchase.purchaseState == Purchase.PurchaseState.PAID) {
-                    _purchaseViews[viewIndex].gameObject.SetActive(true);
-                    _purchaseViews[viewIndex].Data = purchase;
-                    if (++viewIndex >= _purchaseViews.Length) {
-                        break;
-                    }
+                _purchaseViews[viewIndex].gameObject.SetActive(true);
+                _purchaseViews[viewIndex].Data = purchase;
+                if (++viewIndex >= _purchaseViews.Length) {
+                    break;
                 }
             }
         }
@@ -146,6 +144,21 @@ namespace RuStore.Example {
         public void ConsumePurchase(string purchaseId) {
             _loadingIndicator.Show();
             RuStoreBillingClient.Instance.ConfirmPurchase(
+                purchaseId: purchaseId,
+                onFailure: (error) => {
+                    _loadingIndicator.Hide();
+                    OnError(error);
+                },
+                onSuccess: () => {
+                    _loadingIndicator.Hide();
+                    LoadPurchases();
+                });
+        }
+
+        public void DeletePurchase(string purchaseId)
+        {
+            _loadingIndicator.Show();
+            RuStoreBillingClient.Instance.DeletePurchase(
                 purchaseId: purchaseId,
                 onFailure: (error) => {
                     _loadingIndicator.Hide();

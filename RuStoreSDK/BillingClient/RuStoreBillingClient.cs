@@ -8,7 +8,7 @@ namespace RuStore.BillingClient {
 
     public class RuStoreBillingClient {
 
-        public static string PluginVersion = "3.1.0";
+        public static string PluginVersion = "5.0.0";
 
         private static RuStoreBillingClient _instance;
         private static bool _isInstanceInitialized;

@@ -13,6 +13,7 @@ namespace RuStore.BillingClient {
             CANCELLED,
             CONSUMED,
             CLOSED,
+            PAUSED,
             TERMINATED
         }
 
