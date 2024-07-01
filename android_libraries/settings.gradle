@@ -1,0 +1,3 @@
+rootProject.name = "android_libraries"
+include ':RuStoreUnityCore'
+include ':RuStoreUnityBillingClient'
