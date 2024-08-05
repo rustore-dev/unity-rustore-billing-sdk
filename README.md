@@ -1,6 +1,6 @@
 ## RuStore Unity плагин для приема платежей через сторонние приложения
 
-### [🔗 Документация разработчика](https://www.rustore.ru/help/sdk/payments/unity)
+### [🔗 Документация разработчика](https://www.rustore.ru/help/sdk/payments/unity/)
 
 Плагин “RuStoreBillingClient” помогает интегрировать в ваш проект механизм оплаты через сторонние приложения (например, SberPay или СБП).
 
@@ -16,11 +16,11 @@
 
 ### Установка плагина в свой проект
 
-1. Импортируйте пакет Example/RuStoreBillingSDKExample.unitypackage в новый проект Unity.
+1. Импортируйте пакет Example/RuStoreBillingSDKExample.unitypackage в проект Unity.
 
 2. Откройте настройки проекта: Edit → Project Settings → Player → Android Settings.
 
-3. В pазделе Publishing Settings: включите настройки Custom Main Manifest, Custom Main Gradle Template, Custom Gradle Properties Template, настройте keystore для подписи приложения. 
+3. В pазделе Publishing Settings: включите настройки Custom Main Manifest, Custom Main Gradle Template, Custom Gradle Properties Template. 
 
 4. В разделе Other Settings: настройте package name, Minimum API Level = 24, Target API Level = 34.
 

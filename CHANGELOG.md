@@ -2,22 +2,35 @@
 
 ### Release 6.0.0
 - Версия SDK billing 6.+.
-- Добавлено поле clickActionType в классс Notification.
-- Исправлен баг с перезапуском приложения по тапу на пуш.
+- Добавлено поле sandbox у моделей результата покупки PaymentResult.
+- Убрано поле description у модели Purchase.
 - Изменена структура репозитория.
 - Добавлен проект с исходным кодом .aar пакетов.
 
 
-### Release 1.4.0
-- Версия SDK billing 1.4.0.
-- Добавлена возможность автоматической инициализации.
-- Добавлен режим тестирования SDK.
-- Добавлена возможность рассылки по сегментам пользователей.
+### Release 5.0.3
+- Исправлены зависимости SDK.
 
 
-### Release 0.6.1
-- Версия SDK billing 0.6.1.
+### Release 5.0.2
+- Исправлен метод CheckPurchasesAvailability.
 
 
-### Release 0.6.0
-- Версия SDK billing 0.6.0.
+### Release 5.0.1
+- Исправлен метод CheckPurchasesAvailability.
+
+
+### Release 5.0.0
+- Версия SDK billing 5.+.
+
+
+### Release 3.1.0
+- Версия SDK billing 3.1.0.
+
+
+### Release 2.2.1
+- Исправлены зависимости SDK.
+
+
+### Release 2.2.0
+- Версия SDK billing 2.2.0.
