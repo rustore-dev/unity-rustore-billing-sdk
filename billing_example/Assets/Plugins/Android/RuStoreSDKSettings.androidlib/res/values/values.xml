@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="rustore_BillingClientSettings_consoleApplicationId" translatable="false">184062</string>
+    <string name="rustore_BillingClientSettings_deeplinkScheme" translatable="false">example</string>
+    <string name="rustore_BillingClientSettings_allowNativeErrorHandling" translatable="false">True</string>
+    <string name="rustore_BillingClientSettings_enableLogs" translatable="false">True</string>
+
+</resources>
