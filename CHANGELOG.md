@@ -1,5 +1,10 @@
 ## История изменений
 
+### Release 6.0.1
+- Версия SDK billing 6.+.
+- Исправлено содержимое .unitypackage.
+
+
 ### Release 6.0.0
 - Версия SDK billing 6.+.
 - Добавлено поле sandbox у моделей результата покупки PaymentResult.
