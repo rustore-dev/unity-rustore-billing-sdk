@@ -3,6 +3,7 @@
 ### Release 6.0.1
 - Версия SDK billing 6.+.
 - Исправлено содержимое .unitypackage.
+- Отключен функционал RuStoreSDK assembly для совместимости с серией плагинов 6.0.0.
 
 
 ### Release 6.0.0
