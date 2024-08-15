@@ -1,5 +1,10 @@
 ## История изменений
 
+### Release 6.1.0
+- Версия SDK billing 6.1.0.
+- RuStoreSDK помещена в отдельную assembly.
+
+
 ### Release 6.0.0
 - Версия SDK billing 6.+.
 - Добавлено поле sandbox у моделей результата покупки PaymentResult.
