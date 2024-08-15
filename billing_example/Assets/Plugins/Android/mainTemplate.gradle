@@ -4,9 +4,9 @@ apply plugin: 'com.android.library'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 // Android Resolver Dependencies Start
-    implementation 'androidx.lifecycle:lifecycle-viewmodel:2.5.1' // Assets/RuStoreSDK/BillingClient/Editor/BillingClientDependencies.xml:8
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1' // Assets/RuStoreSDK/BillingClient/Editor/BillingClientDependencies.xml:9
-    implementation 'ru.rustore.sdk:billingclient:6.+' // Assets/RuStoreSDK/BillingClient/Editor/BillingClientDependencies.xml:7
+    implementation 'androidx.lifecycle:lifecycle-viewmodel:2.5.1' // Assets/RuStoreSDK/Editor/BillingClient/BillingClientDependencies.xml:8
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1' // Assets/RuStoreSDK/Editor/BillingClient/BillingClientDependencies.xml:9
+    implementation 'ru.rustore.sdk:billingclient:6.1.0' // Assets/RuStoreSDK/Editor/BillingClient/BillingClientDependencies.xml:7
 // Android Resolver Dependencies End
 **DEPS**}
 

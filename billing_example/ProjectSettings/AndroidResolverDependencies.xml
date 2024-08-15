@@ -2,7 +2,7 @@
   <packages>
     <package>androidx.lifecycle:lifecycle-viewmodel:2.5.1</package>
     <package>androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1</package>
-    <package>ru.rustore.sdk:billingclient:6.+</package>
+    <package>ru.rustore.sdk:billingclient:6.1.0</package>
   </packages>
   <files />
   <settings>
