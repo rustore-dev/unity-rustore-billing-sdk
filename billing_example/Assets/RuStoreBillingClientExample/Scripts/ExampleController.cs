@@ -7,7 +7,7 @@ namespace RuStore.Example {
 
     public class ExampleController : MonoBehaviour {
 
-        public const string ExampleVersion = "0.3.0";
+        public const string ExampleVersion = "6.1.0";
 
         [SerializeField]
         private string[] _productIds;

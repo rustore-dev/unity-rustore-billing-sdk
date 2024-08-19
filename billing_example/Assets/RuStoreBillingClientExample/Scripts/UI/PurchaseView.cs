@@ -20,9 +20,6 @@ namespace RuStore.Example.UI {
 
             _title.text = ExampleController.Instance.GetProductName(Data.productId);
             _purchaseState.text = Data.purchaseState.ToString().Replace('_', ' ');
-
-            _consumeButton.gameObject.SetActive(Data.productType == Product.ProductType.CONSUMABLE && Data.purchaseState == Purchase.PurchaseState.PAID);
-            _deleteButton.gameObject.SetActive(Data.productType == Product.ProductType.CONSUMABLE && Data.purchaseState == Purchase.PurchaseState.PAID);
         }
 
         public void ConsumePurchase() {

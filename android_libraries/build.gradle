@@ -1,6 +1,6 @@
 ext {
     destination_project = '../billing_example'
-    rustore_billingclient_version = '6.+'
+    rustore_billingclient_version = '6.1.0'
     rustore_core_version = rustore_billingclient_version
     rustore_sdk_type = ''
     sdk_version_code = 1
