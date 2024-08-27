@@ -27,11 +27,13 @@ namespace RuStore.BillingClient.Internal {
                         purchaseId = responseObject.Get<string>("purchaseId"),
                         productId = responseObject.Get<string>("productId"),
                         invoiceId = responseObject.Get<string>("invoiceId"),
-                        subscriptionToken = responseObject.Get<string>("subscriptionToken")
+                        subscriptionToken = responseObject.Get<string>("subscriptionToken"),
+                        sandbox = responseObject.Get<bool>("sandbox")
                     };
                 case "Cancelled":
                     return new PaymentCancelled() {
-                        purchaseId = responseObject.Get<string>("purchaseId")
+                        purchaseId = responseObject.Get<string>("purchaseId"),
+                        sandbox = responseObject.Get<bool>("sandbox")
                     };
                 case "Failure":
                     return new PaymentFailure() {
@@ -40,7 +42,8 @@ namespace RuStore.BillingClient.Internal {
                         productId = responseObject.Get<string>("productId"),
                         invoiceId = responseObject.Get<string>("invoiceId"),
                         quantity = responseObject.Get<AndroidJavaObject>("quantity")?.Call<int>("intValue") ?? 1,
-                        errorCode = responseObject.Get<AndroidJavaObject>("errorCode")?.Call<int>("intValue") ?? 0
+                        errorCode = responseObject.Get<AndroidJavaObject>("errorCode")?.Call<int>("intValue") ?? 0,
+                        sandbox = responseObject.Get<bool>("sandbox")
                     };
                 default:
                     return new InvalidPaymentState();

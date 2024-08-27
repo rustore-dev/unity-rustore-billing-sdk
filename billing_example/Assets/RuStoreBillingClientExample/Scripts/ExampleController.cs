@@ -137,8 +137,34 @@ namespace RuStore.Example {
                 },
                 onSuccess: (result) => {
                     _loadingIndicator.Hide();
+
+                    bool isSandbox = false;
+                    switch (result) {
+                        case PaymentSuccess paymentSuccess:
+                            isSandbox = paymentSuccess.sandbox;
+                            break;
+                        case PaymentCancelled paymentCancelled:
+                            isSandbox = paymentCancelled.sandbox;
+                            break;
+                        case PaymentFailure paymentFailure:
+                            isSandbox = paymentFailure.sandbox;
+                            break;
+                    }
+
+                    if (isSandbox) {
+                        ShowToast(string.Format("isSandbox: {0}", isSandbox.ToString()));
+                    }
+
                     LoadPurchases();
                 });
+        }
+
+        public void ShowToast(string message) {
+            using (AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
+            using (AndroidJavaObject currentActivity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity"))
+            using (AndroidJavaObject utils = new AndroidJavaObject("com.plugins.billingexample.AndroidUtils")) {
+                utils.Call("showToast", currentActivity, message);
+            }
         }
 
         public void ConsumePurchase(string purchaseId) {
