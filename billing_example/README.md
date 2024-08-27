@@ -88,5 +88,5 @@
 
 Дополнительная помощь и инструкции доступны на странице [rustore.ru/help/](https://www.rustore.ru/help/) и по электронной почте [support@rustore.ru](mailto:support@rustore.ru).
 
-[10]: https://www.rustore.ru/help/sdk/payments/unity/6-1-0
-[20]: https://www.rustore.ru/help/sdk/payments/unity/6-1-0#%D0%BF%D0%BE%D0%BA%D1%83%D0%BF%D0%BA%D0%B0-%D0%BF%D1%80%D0%BE%D0%B4%D1%83%D0%BA%D1%82%D0%B0
+[10]: https://www.rustore.ru/help/sdk/payments/unity/6-1-1
+[20]: https://www.rustore.ru/help/sdk/payments/unity/6-1-1#%D0%BF%D0%BE%D0%BA%D1%83%D0%BF%D0%BA%D0%B0-%D0%BF%D1%80%D0%BE%D0%B4%D1%83%D0%BA%D1%82%D0%B0
