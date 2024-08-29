@@ -6,7 +6,7 @@ namespace RuStore.Editor {
 
     public abstract class RuStoreModuleSettings : ScriptableObject {
 
-        public static string AssetPath = Path.Combine("Assets", "RustoreSDK", "Editor");
+        public static string AssetPath = Path.Combine("Assets", "RuStoreSDK", "Editor");
 
         public static string AssetName<T>() where T : RuStoreModuleSettings {
             return typeof(T).Name + ".asset";
