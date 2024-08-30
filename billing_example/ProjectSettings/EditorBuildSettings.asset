@@ -7,5 +7,5 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/RuStoreBillingClientExample/Scenes/BillingClientSampleScene.unity
-    guid: 121cb3294265a9f46872e9d783ec2330
+    guid: b4f8b70cc5855854f9b128ff3807ec6f
   m_configObjects: {}

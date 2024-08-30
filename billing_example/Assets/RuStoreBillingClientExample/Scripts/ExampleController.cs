@@ -1,38 +1,58 @@
+using System;
 using UnityEngine;
 using RuStore.Example.UI;
 using RuStore.BillingClient;
-using System.Collections.Generic;
 
 namespace RuStore.Example {
 
     public class ExampleController : MonoBehaviour {
 
-        public const string ExampleVersion = "6.1.0";
+        public const string ExampleVersion = "6.1.1";
 
         [SerializeField]
         private string[] _productIds;
 
-        public static ExampleController Instance { get; private set; }
+        [SerializeField]
+        private CardsView productsView;
 
         [SerializeField]
-        private ProductView[] _productViews;
-        [SerializeField]
-        private PurchaseView[] _purchaseViews;
+        private CardsView purchasesView;
 
         [SerializeField]
         private MessageBox _messageBox;
         [SerializeField]
         private LoadingIndicator _loadingIndicator;
 
-        private Dictionary<string, Product> _products = new Dictionary<string, Product>();
-
         private void Awake() {
-            Instance = this;
             RuStoreBillingClient.Instance.Init();
         }
 
         private void Start() {
-            CheckPurchasesAvailability();
+            ProductCardView.OnBuyProduct += ProductCardView_OnBuyProduct;
+
+            PurchaseCardView.OnConfirmPurchase += PurchaseCardView_OnConfirmPurchase;
+            PurchaseCardView.OnDeletePurchase += PurchaseCardView_OnDeletePurchase;
+            PurchaseCardView.OnGetPurchaseInfo += PurchaseCardView_OnGetPurchaseInfo;
+        }
+
+        private void ProductCardView_OnBuyProduct(object sender, EventArgs e) {
+            var product = (sender as ICardView<Product>).GetData();
+            BuyProduct(product.productId);
+        }
+
+        private void PurchaseCardView_OnConfirmPurchase(object sender, EventArgs e) {
+            var purchase = (sender as ICardView<Purchase>).GetData();
+            ConsumePurchase(purchase.purchaseId);
+        }
+
+        private void PurchaseCardView_OnDeletePurchase(object sender, EventArgs e) {
+            var purchase = (sender as ICardView<Purchase>).GetData();
+            DeletePurchase(purchase.purchaseId);
+        }
+
+        private void PurchaseCardView_OnGetPurchaseInfo(object sender, EventArgs e) {
+            var purchase = (sender as ICardView<Purchase>).GetData();
+            GetPurchaseInfo(purchase.purchaseId);
         }
 
         private void Update() {
@@ -41,26 +61,36 @@ namespace RuStore.Example {
             }
         }
 
-        public void SetProductIds(string[] productIds) { 
-            _productIds = productIds;
+        public void CheckTheme(bool value) {
+            var theme = value ? BillingClientTheme.Dark : BillingClientTheme.Light;
+            RuStoreBillingClient.Instance.SetTheme(theme);
         }
 
-        private void CheckPurchasesAvailability() {
+        public void CheckPurchasesAvailability() {
+            _loadingIndicator.Show();
+
             RuStoreBillingClient.Instance.CheckPurchasesAvailability(
                 onFailure: (error) => {
+                    _loadingIndicator.Hide();
+                    OnError(error);
                 },
                 onSuccess: (result) => {
+                    _loadingIndicator.Hide();
+
                     if (result.isAvailable) {
-                        LoadProducts();
+                        _messageBox.Show("Availability", "True");
                     } else {
-                        _messageBox.Show("Error", result.cause.description, LoadProducts);
                         OnError(result.cause);
                     }
                 });
         }
 
-        private void LoadProducts() {
+        public void LoadProducts() {
             _loadingIndicator.Show();
+
+            productsView.gameObject.SetActive(true);
+            purchasesView.gameObject.SetActive(false);
+
             RuStoreBillingClient.Instance.GetProducts(
                 productIds: _productIds,
                 onFailure: (error) => {
@@ -69,35 +99,16 @@ namespace RuStore.Example {
                 },
                 onSuccess: (result) => {
                     _loadingIndicator.Hide();
-
-                    _products.Clear();
-                    result.ForEach(p => _products.Add(p.productId, p));
-
-                    UpdateProductsData(result);
-                    LoadPurchases();
+                    productsView.SetData(result);
                 });
         }
 
-        private void UpdateProductsData(List<Product> products) {
-            foreach (var v in _productViews) {
-                v.Data = null;
-                v.gameObject.SetActive(false);
-            }
-
-            var viewIndex = 0;
-            foreach (var product in products) {
-                if (product.productStatus == Product.ProductStatus.ACTIVE) {
-                    _productViews[viewIndex].gameObject.SetActive(true);
-                    _productViews[viewIndex].Data = product;
-                    if (++viewIndex >= _productViews.Length) {
-                        break;
-                    }
-                }
-            }
-        }
-
-        private void LoadPurchases() {
+        public void LoadPurchases() {
             _loadingIndicator.Show();
+
+            productsView.gameObject.SetActive(false);
+            purchasesView.gameObject.SetActive(true);
+
             RuStoreBillingClient.Instance.GetPurchases(
                 onFailure: (error) => {
                     _loadingIndicator.Hide();
@@ -105,24 +116,8 @@ namespace RuStore.Example {
                 },
                 onSuccess: (result) => {
                     _loadingIndicator.Hide();
-                    UpdatePurchaseData(result);
+                    purchasesView.SetData(result);
                 });
-        }
-
-        private void UpdatePurchaseData(List<Purchase> purchases) {
-            foreach (var v in _purchaseViews) {
-                v.Data = null;
-                v.gameObject.SetActive(false);
-            }
-
-            var viewIndex = 0;
-            foreach (var purchase in purchases) {
-                _purchaseViews[viewIndex].gameObject.SetActive(true);
-                _purchaseViews[viewIndex].Data = purchase;
-                if (++viewIndex >= _purchaseViews.Length) {
-                    break;
-                }
-            }
         }
 
         public void BuyProduct(string productId) {
@@ -154,8 +149,6 @@ namespace RuStore.Example {
                     if (isSandbox) {
                         ShowToast(string.Format("isSandbox: {0}", isSandbox.ToString()));
                     }
-
-                    LoadPurchases();
                 });
         }
 
@@ -196,15 +189,24 @@ namespace RuStore.Example {
                 });
         }
 
-        public string GetProductName(string productId) {
-            if (_products.ContainsKey(productId)) {
-                return _products[productId].title;
-            }
-
-            return "";
+        public void GetPurchaseInfo(string purchaseId)
+        {
+            _loadingIndicator.Show();
+            RuStoreBillingClient.Instance.GetPurchaseInfo(
+                purchaseId: purchaseId,
+                onFailure: (error) => {
+                    _loadingIndicator.Hide();
+                    OnError(error);
+                },
+                onSuccess: (response) => {
+                    _loadingIndicator.Hide();
+                    _messageBox.Show("Purchase", string.Format("Purchase id: {0}", response.purchaseId));
+                });
         }
 
         private void OnError(RuStoreError error) {
+            _messageBox.Show("Error", error.description);
+
             Debug.LogErrorFormat("{0} : {1}", error.name, error.description);
         }
     }

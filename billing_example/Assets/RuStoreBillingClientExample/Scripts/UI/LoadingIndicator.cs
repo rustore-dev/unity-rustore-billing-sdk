@@ -20,9 +20,6 @@ namespace RuStore.Example.UI {
         [SerializeField]
         private float _fillStart;
 
-        [SerializeField]
-        private float _hideTime;
-
         private float _hideTimer;
         private float _currentFillSpeed;
 
@@ -44,13 +41,6 @@ namespace RuStore.Example.UI {
 
             _indicatorFillImage.fillAmount = fill;
             _indicator.Rotate(new Vector3(0f, 0f, _rotationSpeed * dt));
-
-            if (_hideTimer > 0f) {
-                _hideTimer -= dt;
-                if(_hideTimer < 0f) {
-                    gameObject.SetActive(false);
-                }
-            }
         }
 
         public void Show() {
@@ -58,11 +48,10 @@ namespace RuStore.Example.UI {
                 ResetIndicator();
                 gameObject.SetActive(true);
             }
-            _hideTimer = 0f;
         }
 
         public void Hide() {
-            _hideTimer = _hideTime;            
+            gameObject.SetActive(false);
         }
 
         private void ResetIndicator() {
