@@ -1,0 +1,16 @@
+{
+    "name": "RuStoreBilling",
+    "rootNamespace": "",
+    "references": [
+        "GUID:135ec983926c11f42b0fa332de9fc366"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

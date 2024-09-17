@@ -1,0 +1,18 @@
+{
+    "name": "RuStoreBilling-Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:4acfbef6a23b1e24cbcb4b7389c6db22"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
