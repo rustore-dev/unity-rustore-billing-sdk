@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/RuStoreBillingClientExample/Scenes/BillingClientSampleScene.unity
+    path: Assets/RuStoreBillingExample/Scenes/BillingClientSampleScene.unity
     guid: b4f8b70cc5855854f9b128ff3807ec6f
   m_configObjects: {}
