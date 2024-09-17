@@ -4,7 +4,7 @@
 
 Плагин “RuStoreBillingClient” помогает интегрировать в ваш проект механизм оплаты через сторонние приложения (например, SberPay или СБП).
 
-Репозиторий содержит плагины “RuStoreBillingClient” и “RuStoreCommon”, а также демонстрационное приложение с примерами использования и настроек. Поддерживаются версии Unity 2022+.
+Репозиторий содержит плагины “RuStoreBillingClient” и “RuStoreCore”, а также демонстрационное приложение с примерами использования и настроек. Поддерживаются версии Unity 2022+.
 
 
 ### Сборка примера приложения
@@ -37,14 +37,12 @@
 
 2. Выполните сборку проекта командой gradle assemble.
 
-При успешном выполнении сборки в папках _“billing_example / Assets / RuStoreSDK / BillingClient / Android”_ и _“billing_example / Assets / RuStoreSDK / Common / Android”_ будут обновлены файлы:
-- RuStoreUnityBillingClient.aar
-- RuStoreUnityCore.aar
+При успешном выполнении сборки в папке _“ru.rustore.billing / Runtime / Android”_ будет обновлен файл `RuStoreUnityBillingClient.aar`
 
 
 ### История изменений
 
-[CHANGELOG](CHANGELOG.md)
+[CHANGELOG](ru.rustore.billing/CHANGELOG.md)
 
 
 ### Условия распространения
