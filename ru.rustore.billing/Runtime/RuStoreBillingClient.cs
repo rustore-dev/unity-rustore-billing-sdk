@@ -8,7 +8,7 @@ namespace RuStore.BillingClient {
 
     public class RuStoreBillingClient {
 
-        public static string PluginVersion = "6.1.1";
+        public static string PluginVersion = "6.1.2";
 
         private static RuStoreBillingClient _instance;
         private static bool _isInstanceInitialized;
@@ -93,6 +93,14 @@ namespace RuStore.BillingClient {
             var listener = new FeatureAvailabilityListener(onFailure, onSuccess);
             _clientWrapper.Call("checkPurchasesAvailability", listener);
 
+        }
+
+        public bool IsRuStoreInstalled() {
+            if (!IsPlatformSupported()) {
+                return false;
+            }
+
+            return _clientWrapper.Call<bool>("isRuStoreInstalled");
         }
 
         public void GetProducts(string[] productIds, Action<RuStoreError> onFailure, Action<List<Product>> onSuccess) {
@@ -182,7 +190,7 @@ namespace RuStore.BillingClient {
             }
         }
 
-        private bool IsPlatformSupported(Action<RuStoreError> onFailure) {
+        private bool IsPlatformSupported(Action<RuStoreError> onFailure = null) {
             if(Application.platform != RuntimePlatform.Android) {
                 onFailure?.Invoke(new RuStoreError() {
                     name = "RuStoreBillingClientError",

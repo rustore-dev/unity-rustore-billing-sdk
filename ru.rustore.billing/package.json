@@ -1,6 +1,6 @@
 {
   "name": "ru.rustore.billing",
-  "version": "6.1.1",
+  "version": "6.1.2",
   "displayName": "RuStore Billing",
   "description": "RuStore SDK for in-app payments",
   "unity": "2022.3",
