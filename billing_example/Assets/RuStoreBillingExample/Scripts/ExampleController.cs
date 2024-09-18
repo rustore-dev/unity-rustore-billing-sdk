@@ -2,12 +2,13 @@ using System;
 using UnityEngine;
 using RuStore.Example.UI;
 using RuStore.BillingClient;
+using UnityEngine.UI;
 
 namespace RuStore.Example {
 
     public class ExampleController : MonoBehaviour {
 
-        public const string ExampleVersion = "6.1.1";
+        public const string ExampleVersion = "6.1.2";
 
         [SerializeField]
         private string[] _productIds;
@@ -20,8 +21,12 @@ namespace RuStore.Example {
 
         [SerializeField]
         private MessageBox _messageBox;
+
         [SerializeField]
         private LoadingIndicator _loadingIndicator;
+
+        [SerializeField]
+        private Text isRuStoreInstalledLabel;
 
         private void Awake() {
             RuStoreBillingClient.Instance.Init();
@@ -33,6 +38,10 @@ namespace RuStore.Example {
             PurchaseCardView.OnConfirmPurchase += PurchaseCardView_OnConfirmPurchase;
             PurchaseCardView.OnDeletePurchase += PurchaseCardView_OnDeletePurchase;
             PurchaseCardView.OnGetPurchaseInfo += PurchaseCardView_OnGetPurchaseInfo;
+
+            var isRuStoreInstalled = RuStoreBillingClient.Instance.IsRuStoreInstalled();
+            var message = isRuStoreInstalled ? "RuStore is installed [v]" : "RuStor is not installed [x]";
+            isRuStoreInstalledLabel.text = message;
         }
 
         private void ProductCardView_OnBuyProduct(object sender, EventArgs e) {
