@@ -57,7 +57,6 @@ sysinfo.txt
 
 # Builds
 *.apk
-*.unitypackage
 
 # Crashlytics generated file
 crashlytics-build.properties
@@ -72,3 +71,7 @@ crashlytics-build.properties
 # Exceptions
 !*.dll
 !*.obj
+
+# Internal Development
+/[Aa]ssets/[Rr]u[Ss]tore[Uu]tils/
+/[Aa]ssets/[Rr]u[Ss]tore[Uu]tils.meta

@@ -109,9 +109,9 @@
       "depth": 0,
       "source": "registry",
       "dependencies": {
+        "com.unity.modules.audio": "1.0.0",
         "com.unity.modules.director": "1.0.0",
         "com.unity.modules.animation": "1.0.0",
-        "com.unity.modules.audio": "1.0.0",
         "com.unity.modules.particlesystem": "1.0.0"
       },
       "url": "https://packages.unity.com"
@@ -134,6 +134,20 @@
         "com.unity.modules.jsonserialize": "1.0.0"
       },
       "url": "https://packages.unity.com"
+    },
+    "ru.rustore.billing": {
+      "version": "file:../../ru.rustore.billing",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {
+        "ru.rustore.core": "6.1.0"
+      }
+    },
+    "ru.rustore.core": {
+      "version": "file:../../upm_tgz/ru.rustore.core-6.1.0.tgz",
+      "depth": 0,
+      "source": "local-tarball",
+      "dependencies": {}
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
