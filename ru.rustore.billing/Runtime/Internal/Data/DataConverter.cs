@@ -35,20 +35,6 @@ namespace RuStore.BillingClient.Internal {
             return product;
         }
 
-        public static DigitalShopGeneralError ConvertDigitalShopGeneralError(AndroidJavaObject obj) {
-            if (obj == null) {
-                return null;
-            }
-
-            var error = new DigitalShopGeneralError() {
-                name = obj.Get<string>("name"),
-                code = obj.Get<AndroidJavaObject>("code")?.Call<int>("intValue") ?? 0,
-                description = obj.Get<string>("description")
-            };
-
-            return error;
-        }
-
         public static ProductSubscription ConvertProductSubscription(AndroidJavaObject obj) {
             if (obj == null) {
                 return null;
@@ -104,34 +90,6 @@ namespace RuStore.BillingClient.Internal {
             };
 
             return purchase;
-        }
-
-        public static void InitResponseWithCode(AndroidJavaObject obj, ResponseWithCode response) {
-            response.code = obj.Get<int>("code");
-            response.errorMessage = obj.Get<string>("errorMessage");
-            response.errorDescription = obj.Get<string>("errorDescription");
-            response.errors = new List<DigitalShopGeneralError>();
-
-            using (var meta = obj.Get<AndroidJavaObject>("meta")) {
-                if (meta != null) {
-                    response.meta = new RequestMeta() {
-                        traceId = meta.Get<string>("traceId")
-                    };
-                }
-            }
-
-            using (var errors = obj.Get<AndroidJavaObject>("errors")) {
-                if (errors != null) {
-                    var size = errors.Call<int>("size");
-                    for (var i = 0; i < size; i++) {
-                        using (var e = errors.Call<AndroidJavaObject>("get", i)) {
-                            if (e != null) {
-                                response.errors.Add(ConvertDigitalShopGeneralError(e));
-                            }
-                        }
-                    }
-                }
-            }
         }
     }
 }
