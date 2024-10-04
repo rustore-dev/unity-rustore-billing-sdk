@@ -19,16 +19,16 @@ namespace RuStore.BillingClient {
 
         public string purchaseId;
         public string productId;
-        public Product.ProductType productType;
+        public Product.ProductType? productType;
         public string invoiceId;
         public string language;
-        public DateTime purchaseTime;
+        public DateTime? purchaseTime;
         public string orderId;
         public string amountLabel;
-        public int amount;
+        public int? amount;
         public string currency;
-        public int quantity;
-        public PurchaseState purchaseState;
+        public int? quantity;
+        public PurchaseState? purchaseState;
         public string developerPayload;
         public string subscriptionToken;
     }

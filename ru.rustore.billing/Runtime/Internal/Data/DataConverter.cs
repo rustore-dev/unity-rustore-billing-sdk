@@ -70,21 +70,19 @@ namespace RuStore.BillingClient.Internal {
                 return null;
             }
 
-            var startDate = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-
             var purchase = new Purchase() {
                 purchaseId = obj.Get<string>("purchaseId"),
                 productId = obj.Get<string>("productId"),
-                productType = (Product.ProductType)Enum.Parse(typeof(Product.ProductType), obj.Get<AndroidJavaObject>("productType").Call<string>("toString"), true),
+                productType = ConvertEnum<Product.ProductType>(obj.Get<AndroidJavaObject>("productType")),
                 invoiceId = obj.Get<string>("invoiceId"),
                 language = obj.Get<string>("language"),
-                purchaseTime = startDate.AddMilliseconds(obj.Get<AndroidJavaObject>("purchaseTime").Call<long>("getTime")),
+                purchaseTime = ConvertDateTime(obj.Get<AndroidJavaObject>("purchaseTime")),
                 orderId = obj.Get<string>("orderId"),
                 amountLabel = obj.Get<string>("amountLabel"),
-                amount = obj.Get<AndroidJavaObject>("amount")?.Call<int>("intValue") ?? 0,
+                amount = obj.Get<AndroidJavaObject>("amount")?.Call<int>("intValue"),
                 currency = obj.Get<string>("currency"),
-                quantity = obj.Get<AndroidJavaObject>("quantity")?.Call<int>("intValue") ?? 0,
-                purchaseState = (Purchase.PurchaseState)Enum.Parse(typeof(Purchase.PurchaseState), obj.Get<AndroidJavaObject>("purchaseState").Call<string>("toString"), true),
+                quantity = obj.Get<AndroidJavaObject>("quantity")?.Call<int>("intValue"),
+                purchaseState = ConvertEnum<Purchase.PurchaseState>(obj.Get<AndroidJavaObject>("purchaseState")),
                 developerPayload = obj.Get<string>("developerPayload"),
                 subscriptionToken = obj.Get<string>("subscriptionToken")
             };
@@ -93,11 +91,21 @@ namespace RuStore.BillingClient.Internal {
         }
 
         public static T? ConvertEnum<T>(AndroidJavaObject obj) where T : struct {
-            Type type = typeof(Product.ProductType);
+            Type type = typeof(T);
             string strValue = obj?.Call<string>("toString");
             object enumValue;
 
             return Enum.TryParse(type, strValue, true, out enumValue) ? (T?)enumValue : null;
+        }
+
+        public static DateTime? ConvertDateTime(AndroidJavaObject obj) {
+            DateTime? dateTime = null;
+            if (obj != null) {
+                long time = obj.Call<long>("getTime");
+                dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc).AddMilliseconds(time);
+            }
+
+            return dateTime;
         }
     }
 }
