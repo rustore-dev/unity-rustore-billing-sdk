@@ -14,10 +14,10 @@ namespace RuStore.BillingClient.Internal {
 
             var product = new Product() {
                 productId = obj.Get<string>("productId"),
-                productType = (Product.ProductType)Enum.Parse(typeof(Product.ProductType), obj.Get<AndroidJavaObject>("productType").Call<string>("toString"), true),
+                productType = ConvertEnum<Product.ProductType>(obj.Get<AndroidJavaObject>("productType")),
                 productStatus = (Product.ProductStatus)Enum.Parse(typeof(Product.ProductStatus), obj.Get<AndroidJavaObject>("productStatus").Call<string>("toString"), true),
                 priceLabel = obj.Get<string>("priceLabel"),
-                price = obj.Get<AndroidJavaObject>("price")?.Call<int>("intValue") ?? 0,
+                price = obj.Get<AndroidJavaObject>("price")?.Call<int>("intValue"),
                 currency = obj.Get<string>("currency"),
                 language = obj.Get<string>("language"),
                 title = obj.Get<string>("title"),
@@ -90,6 +90,14 @@ namespace RuStore.BillingClient.Internal {
             };
 
             return purchase;
+        }
+
+        public static T? ConvertEnum<T>(AndroidJavaObject obj) where T : struct {
+            Type type = typeof(Product.ProductType);
+            string strValue = obj?.Call<string>("toString");
+            object enumValue;
+
+            return Enum.TryParse(type, strValue, true, out enumValue) ? (T?)enumValue : null;
         }
     }
 }
