@@ -31,7 +31,7 @@
 1. Откройте настройки **RuStore Billing SDK** (**Window → RuStoreSDK → Settings → BillingClient**).
 1. В поле **Console Application Id** укажите значение `consoleApplicationId` — код приложения из консоли разработчика RuStore.
 1. В поле **Deeplink Scheme** укажите значение `deeplinkScheme` — URL-адрес для использования deeplink.
-1. Откройте сцену **BillingClientSampleScene** в списке **Product Ids** (объект **ExampleController → Example Controller (Script)**) перечислите [подписки](https://www.rustore.ru/help/developers/monetization/create-app-subscription/) и [разовые покупки](https://www.rustore.ru/help/developers/monetization/create-paid-product-in-application/), доступные в вашем приложении.
+1. Откройте сцену **BillingClientSampleScene**, в списке **Product Ids** (объект **ExampleController → Example Controller (Script)**) перечислите [подписки](https://www.rustore.ru/help/developers/monetization/create-app-subscription/) и [разовые покупки](https://www.rustore.ru/help/developers/monetization/create-paid-product-in-application/), доступные в вашем приложении.
 1. В разделе **Publishing Settings** (**Edit → Project Settings → Player → Android Settings**) выберите вариант **Custom Keystore** и задайте параметры **Path / Password**, **Alias / Password** подготовленного файла `*.keystore`.
 1. В разделе **Other Settings** (**Edit → Project Settings → Player → Android Settings**) настройте раздел **Identification**, отметив опцию **Override Default Package Name** и указав `applicationId` в поле **Package Name**.
 1. Выполните сборку проекта командой **Build** (**File → Build Settings**) и проверьте работу приложения.
