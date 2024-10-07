@@ -3,7 +3,7 @@ package com.plugins.billingexample;
 import android.app.Activity;
 import android.widget.Toast;
 
-public class AndroidUtils
+public class RuStoreBillingAndroidUtils
 {
 	public void showToast(final Activity activity, String message)
 	{

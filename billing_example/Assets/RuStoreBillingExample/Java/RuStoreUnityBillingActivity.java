@@ -5,7 +5,7 @@ import android.content.Intent;
 import ru.rustore.unitysdk.billingclient.RuStoreUnityBillingClient;
 import com.unity3d.player.UnityPlayerActivity;
 
-public class RuStoreUnityActivity extends UnityPlayerActivity {
+public class RuStoreUnityBillingActivity extends UnityPlayerActivity {
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
