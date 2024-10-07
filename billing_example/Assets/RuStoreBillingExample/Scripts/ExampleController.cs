@@ -1,10 +1,10 @@
 using System;
 using UnityEngine;
-using RuStore.Example.UI;
+using RuStore.BillingExample.UI;
 using RuStore.BillingClient;
 using UnityEngine.UI;
 
-namespace RuStore.Example {
+namespace RuStore.BillingExample {
 
     public class ExampleController : MonoBehaviour {
 

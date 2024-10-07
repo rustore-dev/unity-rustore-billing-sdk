@@ -1,11 +1,9 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using RuStore.BillingClient;
 
-namespace RuStore.Example.UI {
+namespace RuStore.BillingExample.UI {
 
     public class PurchaseCardView : MonoBehaviour, ICardView<Purchase> {
 
