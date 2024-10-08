@@ -1,10 +1,10 @@
 using System;
 using UnityEngine;
-using RuStore.Example.UI;
+using RuStore.BillingExample.UI;
 using RuStore.BillingClient;
 using UnityEngine.UI;
 
-namespace RuStore.Example {
+namespace RuStore.BillingExample {
 
     public class ExampleController : MonoBehaviour {
 
@@ -164,7 +164,7 @@ namespace RuStore.Example {
         public void ShowToast(string message) {
             using (AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
             using (AndroidJavaObject currentActivity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity"))
-            using (AndroidJavaObject utils = new AndroidJavaObject("com.plugins.billingexample.AndroidUtils")) {
+            using (AndroidJavaObject utils = new AndroidJavaObject("com.plugins.billingexample.RuStoreBillingAndroidUtils")) {
                 utils.Call("showToast", currentActivity, message);
             }
         }
