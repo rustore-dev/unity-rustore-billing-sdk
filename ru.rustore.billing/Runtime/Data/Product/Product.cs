@@ -16,10 +16,10 @@ namespace RuStore.BillingClient {
         }
 
         public string productId;
-        public ProductType productType;
+        public ProductType? productType;
         public ProductStatus productStatus;
         public string priceLabel;
-        public int price;
+        public int? price;
         public string currency;
         public string language;
         public string title;

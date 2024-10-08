@@ -24,9 +24,9 @@ namespace RuStore.BillingClient {
         public string purchaseId;
         public string invoiceId;
         public string orderId;
-        public int quantity;
+        public int? quantity;
         public string productId;
-        public int errorCode;
+        public int? errorCode;
         public bool sandbox;
     }
 

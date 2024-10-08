@@ -41,8 +41,8 @@ namespace RuStore.BillingClient.Internal {
                         purchaseId = responseObject.Get<string>("purchaseId"),
                         productId = responseObject.Get<string>("productId"),
                         invoiceId = responseObject.Get<string>("invoiceId"),
-                        quantity = responseObject.Get<AndroidJavaObject>("quantity")?.Call<int>("intValue") ?? 1,
-                        errorCode = responseObject.Get<AndroidJavaObject>("errorCode")?.Call<int>("intValue") ?? 0,
+                        quantity = responseObject.Get<AndroidJavaObject>("quantity")?.Call<int>("intValue"),
+                        errorCode = responseObject.Get<AndroidJavaObject>("errorCode")?.Call<int>("intValue"),
                         sandbox = responseObject.Get<bool>("sandbox")
                     };
                 default:
