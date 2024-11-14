@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace RuStore.Example.UI {
+namespace RuStore.BillingExample.UI {
 
     public interface ICardView<T> {
 

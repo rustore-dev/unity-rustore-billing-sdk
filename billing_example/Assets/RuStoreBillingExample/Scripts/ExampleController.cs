@@ -8,7 +8,7 @@ namespace RuStore.BillingExample {
 
     public class ExampleController : MonoBehaviour {
 
-        public const string ExampleVersion = "6.1.2";
+        public const string ExampleVersion = "7.0.0";
 
         [SerializeField]
         private string[] _productIds;
@@ -40,7 +40,7 @@ namespace RuStore.BillingExample {
             PurchaseCardView.OnGetPurchaseInfo += PurchaseCardView_OnGetPurchaseInfo;
 
             var isRuStoreInstalled = RuStoreBillingClient.Instance.IsRuStoreInstalled();
-            var message = isRuStoreInstalled ? "RuStore is installed [v]" : "RuStor is not installed [x]";
+            var message = isRuStoreInstalled ? "RuStore is installed [v]" : "RuStore is not installed [x]";
             isRuStoreInstalledLabel.text = message;
         }
 

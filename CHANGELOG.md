@@ -1,5 +1,8 @@
 ## История изменений
 
+### Release 7.0.0
+- Версия SDK Billing 7.0.0.
+
 ### Release 6.1.1
 - Версия SDK Billing 6.1.0.
 - Исправлен парсинг поля `sandbox` в `PaymentResult`.
