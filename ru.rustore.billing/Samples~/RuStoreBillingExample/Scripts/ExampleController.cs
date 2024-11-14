@@ -1,14 +1,14 @@
 using System;
 using UnityEngine;
-using RuStore.Example.UI;
+using RuStore.BillingExample.UI;
 using RuStore.BillingClient;
 using UnityEngine.UI;
 
-namespace RuStore.Example {
+namespace RuStore.BillingExample {
 
     public class ExampleController : MonoBehaviour {
 
-        public const string ExampleVersion = "6.1.2";
+        public const string ExampleVersion = "7.0.0";
 
         [SerializeField]
         private string[] _productIds;
@@ -40,7 +40,7 @@ namespace RuStore.Example {
             PurchaseCardView.OnGetPurchaseInfo += PurchaseCardView_OnGetPurchaseInfo;
 
             var isRuStoreInstalled = RuStoreBillingClient.Instance.IsRuStoreInstalled();
-            var message = isRuStoreInstalled ? "RuStore is installed [v]" : "RuStor is not installed [x]";
+            var message = isRuStoreInstalled ? "RuStore is installed [v]" : "RuStore is not installed [x]";
             isRuStoreInstalledLabel.text = message;
         }
 
@@ -164,7 +164,7 @@ namespace RuStore.Example {
         public void ShowToast(string message) {
             using (AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
             using (AndroidJavaObject currentActivity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity"))
-            using (AndroidJavaObject utils = new AndroidJavaObject("com.plugins.billingexample.AndroidUtils")) {
+            using (AndroidJavaObject utils = new AndroidJavaObject("com.plugins.billingexample.RuStoreBillingAndroidUtils")) {
                 utils.Call("showToast", currentActivity, message);
             }
         }

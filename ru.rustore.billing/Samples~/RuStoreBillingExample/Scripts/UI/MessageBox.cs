@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace RuStore.Example.UI {
+namespace RuStore.BillingExample.UI {
 
     public class MessageBox : MonoBehaviour {
 
