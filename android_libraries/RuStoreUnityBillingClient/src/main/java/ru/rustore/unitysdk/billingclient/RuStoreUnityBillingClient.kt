@@ -77,7 +77,7 @@ object RuStoreUnityBillingClient {
 	}
 
 	fun checkPurchasesAvailability(listener: FeatureAvailabilityListener) {
-		RuStoreBillingClient.checkPurchasesAvailability(PlayerProvider.getCurrentActivity().application)
+		RuStoreBillingClient.checkPurchasesAvailability()
 			.addOnSuccessListener { result -> listener.OnSuccess(result) }
 			.addOnFailureListener { throwable ->
 				handleError(throwable)
