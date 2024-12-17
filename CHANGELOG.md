@@ -1,5 +1,8 @@
 ## История изменений
 
+### Release 8.0.0-alpha02
+- Версия SDK Billing 8.0.0-alpha02.
+
 ### Release 7.0.0
 - Версия SDK Billing 7.0.0.
 
