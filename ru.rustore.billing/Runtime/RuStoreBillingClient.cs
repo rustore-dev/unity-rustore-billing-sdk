@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using RuStore.CoreClient;
 using RuStore.BillingClient.Internal;
 using RuStore.Internal;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ namespace RuStore.BillingClient {
 
     public class RuStoreBillingClient {
 
-        public static string PluginVersion = "7.0.0";
+        public static string PluginVersion = "8.0.0-alpha02";
 
         private static RuStoreBillingClient _instance;
         private static bool _isInstanceInitialized;
@@ -95,12 +96,22 @@ namespace RuStore.BillingClient {
 
         }
 
+        [Obsolete("Deprecated. Use RuStoreCore.Instance.IsRuStoreInstalled instead.")]
         public bool IsRuStoreInstalled() {
             if (!IsPlatformSupported()) {
                 return false;
             }
 
-            return _clientWrapper.Call<bool>("isRuStoreInstalled");
+            return RuStoreCoreClient.Instance.IsRuStoreInstalled();
+        }
+
+        public void GetAuthorizationStatus(Action<RuStoreError> onFailure, Action<UserAuthorizationStatus> onSuccess) {
+            if (!IsPlatformSupported(onFailure)) {
+                return;
+            }
+
+            var listener = new UserAuthorizationStatusListener(onFailure, onSuccess);
+            _clientWrapper.Call("getAuthorizationStatus", listener);
         }
 
         public void GetProducts(string[] productIds, Action<RuStoreError> onFailure, Action<List<Product>> onSuccess) {

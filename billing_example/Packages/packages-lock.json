@@ -140,11 +140,11 @@
       "depth": 0,
       "source": "local",
       "dependencies": {
-        "ru.rustore.core": "7.0.0"
+        "ru.rustore.core": "8.0.0-alpha02"
       }
     },
     "ru.rustore.core": {
-      "version": "file:../../upm_tgz/ru.rustore.core-7.0.0.tgz",
+      "version": "file:../../upm_tgz/ru.rustore.core-8.0.0-alpha02.tgz",
       "depth": 0,
       "source": "local-tarball",
       "dependencies": {}

@@ -9,9 +9,9 @@ import ru.rustore.sdk.billingclient.provider.logger.ExternalPaymentLogger
 import ru.rustore.sdk.billingclient.utils.pub.checkPurchasesAvailability
 import ru.rustore.sdk.billingclient.utils.resolveForBilling
 import ru.rustore.sdk.core.exception.RuStoreException
-import ru.rustore.sdk.core.util.RuStoreUtils
 import ru.rustore.unitysdk.billingclient.callbacks.ConfirmPurchaseListener
 import ru.rustore.unitysdk.billingclient.callbacks.DeletePurchaseListener
+import ru.rustore.unitysdk.billingclient.callbacks.UserAuthorizationStatusListener
 import ru.rustore.unitysdk.billingclient.callbacks.PaymentResultListener
 import ru.rustore.unitysdk.billingclient.callbacks.ProductsResponseListener
 import ru.rustore.unitysdk.billingclient.callbacks.PurchaseInfoResponseListener
@@ -85,10 +85,14 @@ object RuStoreUnityBillingClient {
 			}
 	}
 
-	fun isRuStoreInstalled(): Boolean =
-		PlayerProvider.getCurrentActivity().application?.let {
-			return RuStoreUtils.isRuStoreInstalled(it)
-		} ?: false
+	fun getAuthorizationStatus(listener: UserAuthorizationStatusListener) {
+		billingClient.userInfo.getAuthorizationStatus()
+			.addOnSuccessListener { result -> listener.OnSuccess(result) }
+			.addOnFailureListener { throwable ->
+				handleError(throwable)
+				listener.OnFailure(throwable)
+			}
+	}
 
 	fun getProducts(productIds: Array<String>, listener: ProductsResponseListener) {
 		billingClient.products.getProducts(productIds = productIds.asList())
