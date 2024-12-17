@@ -3,6 +3,7 @@ using UnityEngine;
 using RuStore.BillingExample.UI;
 using RuStore.BillingClient;
 using UnityEngine.UI;
+using RuStore.CoreClient;
 
 namespace RuStore.BillingExample {
 
@@ -39,7 +40,7 @@ namespace RuStore.BillingExample {
             PurchaseCardView.OnDeletePurchase += PurchaseCardView_OnDeletePurchase;
             PurchaseCardView.OnGetPurchaseInfo += PurchaseCardView_OnGetPurchaseInfo;
 
-            var isRuStoreInstalled = RuStoreBillingClient.Instance.IsRuStoreInstalled();
+            var isRuStoreInstalled = RuStoreCoreClient.Instance.IsRuStoreInstalled();
             var message = isRuStoreInstalled ? "RuStore is installed [v]" : "RuStore is not installed [x]";
             isRuStoreInstalledLabel.text = message;
         }
@@ -91,6 +92,20 @@ namespace RuStore.BillingExample {
                     } else {
                         OnError(result.cause);
                     }
+                });
+        }
+
+        public void GetAuthorizationStatus() {
+            _loadingIndicator.Show();
+
+            RuStoreBillingClient.Instance.GetAuthorizationStatus(
+                onFailure: (error) => {
+                    _loadingIndicator.Hide();
+                    OnError(error);
+                },
+                onSuccess: (result) => {
+                    _loadingIndicator.Hide();
+                    ShowToast(string.Format("User is authorized: {0}", result.authorized));
                 });
         }
 
