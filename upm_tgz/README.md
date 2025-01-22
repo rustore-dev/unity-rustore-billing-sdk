@@ -33,5 +33,5 @@
 Дополнительная помощь и инструкции доступны в [документации RuStore](https://www.rustore.ru/help/) и по электронной почте support@rustore.ru.
 
 [10]: https://www.rustore.ru/help/sdk/payments/unity/7-0-0
-[20]: https://gitflic.ru/project/rustore/unity-rustore-billing-sdk/blob/raw?file=upm_tgz%2Fru.rustore.core-7-0-0.tgz&inline=false
-[30]: https://gitflic.ru/project/rustore/unity-rustore-billing-sdk/blob/raw?file=upm_tgz%2Fru.rustore.billing-7-0-0.tgz&inline=false
+[20]: https://gitflic.ru/project/rustore/unity-rustore-billing-sdk/blob/raw?file=upm_tgz%2Fru.rustore.core-7.0.0.tgz&inline=false
+[30]: https://gitflic.ru/project/rustore/unity-rustore-billing-sdk/blob/raw?file=upm_tgz%2Fru.rustore.billing-7.0.0.tgz&inline=false
