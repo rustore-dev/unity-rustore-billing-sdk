@@ -14,10 +14,10 @@ import ru.rustore.unitysdk.billingclient.callbacks.ConfirmPurchaseListener
 import ru.rustore.unitysdk.billingclient.callbacks.DeletePurchaseListener
 import ru.rustore.unitysdk.billingclient.callbacks.PaymentResultListener
 import ru.rustore.unitysdk.billingclient.callbacks.ProductsResponseListener
+import ru.rustore.unitysdk.billingclient.callbacks.PurchaseAvailabilityListener
 import ru.rustore.unitysdk.billingclient.callbacks.PurchaseInfoResponseListener
 import ru.rustore.unitysdk.billingclient.callbacks.PurchasesResponseListener
 import ru.rustore.unitysdk.core.PlayerProvider
-import ru.rustore.unitysdk.core.callbacks.FeatureAvailabilityListener
 
 object RuStoreUnityBillingClient {
 
@@ -33,6 +33,21 @@ object RuStoreUnityBillingClient {
 		return allowErrorHandling
 	}
 
+	fun init(consoleApplicationId: String, deeplinkScheme: String, enableLogs: Boolean, metricType: String) {
+		init(
+			consoleApplicationId = consoleApplicationId,
+			deeplinkScheme = deeplinkScheme,
+			allowErrorHandling = false,
+			enableLogs = enableLogs,
+			metricType = metricType
+		)
+	}
+
+	@Deprecated(
+		message = "This method is deprecated. Use init(consoleApplicationId: String, deeplinkScheme: String, enableLogs: Boolean, metricType: String) instead.",
+		replaceWith = ReplaceWith("init(consoleApplicationId: String, deeplinkScheme: String, enableLogs: Boolean, metricType: String)"),
+		level = DeprecationLevel.WARNING
+	)
 	fun init(consoleApplicationId: String, deeplinkScheme: String, allowErrorHandling: Boolean, enableLogs: Boolean, metricType: String) {
 		if (isInitialized) return
 
@@ -76,7 +91,8 @@ object RuStoreUnityBillingClient {
 		isInitialized = true;
 	}
 
-	fun checkPurchasesAvailability(listener: FeatureAvailabilityListener) {
+	@Deprecated("This method is deprecated. This method only works for flows with an authorized user in RuStore.")
+	fun checkPurchasesAvailability(listener: PurchaseAvailabilityListener) {
 		RuStoreBillingClient.checkPurchasesAvailability()
 			.addOnSuccessListener { result -> listener.OnSuccess(result) }
 			.addOnFailureListener { throwable ->

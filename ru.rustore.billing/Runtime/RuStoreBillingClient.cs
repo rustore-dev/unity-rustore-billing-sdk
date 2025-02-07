@@ -14,7 +14,7 @@ namespace RuStore.BillingClient {
         /// <summary>
         /// Версия плагина.
         /// </summary>
-        public static string PluginVersion = "7.0.0";
+        public static string PluginVersion = "8.0.0";
 
         private static RuStoreBillingClient _instance;
         private static bool _isInstanceInitialized;
@@ -47,6 +47,7 @@ namespace RuStore.BillingClient {
         /// Обработка ошибок в нативном SDK.
         /// true — разрешает обработку ошибок, false — запрещает.
         /// </summary>
+        [Obsolete("This field is deprecated. Error handling must be performed on the application side.")]
         public bool AllowNativeErrorHandling {
             get {
                 return _allowNativeErrorHandling;
@@ -131,12 +132,13 @@ namespace RuStore.BillingClient {
         /// Действие, выполняемое при успешном завершении операции.
         /// Возвращает объект RuStore.FeatureAvailabilityResult с информцаией о доступности оплаты.
         /// </param>
-        public void CheckPurchasesAvailability(Action<RuStoreError> onFailure, Action<FeatureAvailabilityResult> onSuccess) {
+        [Obsolete("This method is deprecated. This method only works for flows with an authorized user in RuStore.")]
+        public void CheckPurchasesAvailability(Action<RuStoreError> onFailure, Action<PurchaseAvailabilityResult> onSuccess) {
             if (!IsPlatformSupported(onFailure)) {
                 return;
             }
 
-            var listener = new FeatureAvailabilityListener(onFailure, onSuccess);
+            var listener = new PurchaseAvailabilityListener(onFailure, onSuccess);
             _clientWrapper.Call("checkPurchasesAvailability", listener);
 
         }

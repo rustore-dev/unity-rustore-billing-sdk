@@ -2,12 +2,14 @@
   <packages>
     <package>androidx.lifecycle:lifecycle-viewmodel:2.5.1</package>
     <package>androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1</package>
-    <package>ru.rustore.sdk:billingclient:7.0.0</package>
+    <package>org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22</package>
+    <package>ru.rustore.sdk:billingclient:8.0.0</package>
+    <package>ru.rustore.sdk:core:8.0.0</package>
   </packages>
   <files />
   <settings>
     <setting name="androidAbis" value="arm64-v8a,armeabi-v7a" />
-    <setting name="bundleId" value="com.DefaultCompany.billing_example" />
+    <setting name="bundleId" value="ru.rustore.payunity" />
     <setting name="explodeAars" value="True" />
     <setting name="gradleBuildEnabled" value="True" />
     <setting name="gradlePropertiesTemplateEnabled" value="True" />

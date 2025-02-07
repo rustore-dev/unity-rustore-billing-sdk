@@ -1,11 +1,12 @@
 <dependencies>
     <androidPackages>
-        <androidPackage spec="ru.rustore.sdk:billingclient:7.0.0">
+        <androidPackage spec="ru.rustore.sdk:billingclient:8.0.0">
             <repositories>
                 <repository>https://artifactory-external.vkpartner.ru/artifactory/maven</repository>
             </repositories>
         </androidPackage>
         <androidPackage spec="androidx.lifecycle:lifecycle-viewmodel:2.5.1" />
         <androidPackage spec="androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1" />
+        <androidPackage spec="org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22" />
     </androidPackages>
 </dependencies>

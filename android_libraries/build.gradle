@@ -1,8 +1,7 @@
 ext {
     destination_project = '../ru.rustore.billing'
-    rustore_billingclient_version = '7.0.0'
-    rustore_sdk_type = ''
-    sdk_version_code = 700
+    rustore_billingclient_version = '8.0.0'
+    sdk_version_code = rustore_billingclient_version.split('-')[0].replaceAll(/\D/, '').toInteger()
 }
 buildscript {
     ext.kotlin_version = "1.9.0"
