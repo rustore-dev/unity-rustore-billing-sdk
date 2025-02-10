@@ -19,8 +19,8 @@ dependencyResolutionManagement {
 // Android Resolver Repos Start
         def unityProjectPath = $/file:///**DIR_UNITYPROJECT**/$.replace("\\", "/")
         maven {
-            url "https://artifactory-external.vkpartner.ru/artifactory/maven" // Packages/ru.rustore.billing/Editor/BillingClientDependencies.xml:7
-        }
+            url "https://artifactory-external.vkpartner.ru/artifactory/maven" // Packages/ru.rustore.billing/Editor/BillingClientDependencies.xml:7, Packages/ru.rustore.core/Editor/CoreClientDependencies.xml:7
+		}
         mavenLocal()
 // Android Resolver Repos End
         flatDir {

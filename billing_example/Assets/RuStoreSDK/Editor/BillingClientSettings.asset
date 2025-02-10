@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3e591d99a91dca4ba692a69b0d0dd43, type: 3}
   m_Name: BillingClientSettings
   m_EditorClassIdentifier: 
-  consoleApplicationId: 184062
+  consoleApplicationId: 198332
   deeplinkScheme: example
   allowNativeErrorHandling: 1
   enableLogs: 1

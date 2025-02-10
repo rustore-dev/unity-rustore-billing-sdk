@@ -1604,12 +1604,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _productIds:
-  - ue_non_con1
-  - ue_non_con2
-  - ue_con1
-  - ue_con2
-  - ue_sub1
-  - ue_sub2
+  - unity_non_con_1
+  - unity_con_2
   productsView: {fileID: 1527957041}
   purchasesView: {fileID: 1959168379}
   _messageBox: {fileID: 310678598}

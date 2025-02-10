@@ -1,5 +1,12 @@
 ## История изменений
 
+### Release 8.0.0
+- Версия SDK Billing 8.0.0.
+- Метод `CheckPurchasesAvailability` в классе `RuStoreBillingClient` помечен как устаревший.
+- Метод `CheckPurchasesAvailability` в событии `onSuccess` возвращает объект `PurchaseAvailabilityResult`.
+- Поле `AllowNativeErrorHandling` в классе `RuStoreBillingClient` помечено как устаревшее.
+- Поле `allowNativeErrorHandling` в классе `RuStoreBillingClientConfig` помечено как устаревшее.
+
 ### Release 7.0.0
 - Версия SDK Billing 7.0.0.
 

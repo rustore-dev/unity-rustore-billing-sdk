@@ -1,4 +1,4 @@
-using UnityEngine;
+using System;
 
 namespace RuStore.BillingClient {
 
@@ -19,8 +19,9 @@ namespace RuStore.BillingClient {
         public string deeplinkScheme;
 
         /// <summary>
-        /// Разрешить обработку ошибок в нативном SDK
+        /// Разрешить обработку ошибок в нативном SDK.
         /// </summary>
+        [Obsolete("This field is deprecated. Error handling must be performed on the application side.")]
         public bool allowNativeErrorHandling;
 
         /// <summary>
