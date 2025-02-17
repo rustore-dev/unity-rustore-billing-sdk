@@ -1,7 +1,6 @@
 using UnityEngine;
 using System;
 using RuStore.BillingClient.Internal;
-using RuStore.Internal;
 using System.Collections.Generic;
 
 namespace RuStore.BillingClient {
@@ -14,7 +13,7 @@ namespace RuStore.BillingClient {
         /// <summary>
         /// Версия плагина.
         /// </summary>
-        public static string PluginVersion = "8.0.0";
+        public static string PluginVersion = "8.0.1";
 
         private static RuStoreBillingClient _instance;
         private static bool _isInstanceInitialized;
@@ -140,7 +139,6 @@ namespace RuStore.BillingClient {
 
             var listener = new PurchaseAvailabilityListener(onFailure, onSuccess);
             _clientWrapper.Call("checkPurchasesAvailability", listener);
-
         }
 
         /// <summary>
@@ -153,6 +151,24 @@ namespace RuStore.BillingClient {
             }
 
             return _clientWrapper.Call<bool>("isRuStoreInstalled");
+        }
+
+        /// <summary>
+        /// Проверка статуса авторизации у пользователя.
+        /// </summary>
+        /// <param name="onFailure">
+        /// Действие, выполняемое в случае ошибки.
+        /// Возвращает объект RuStore.RuStoreError с информацией об ошибке.
+        /// </param>
+        /// <param name="onSuccess">
+        /// Действие, выполняемое при успешном завершении операции.
+        /// Возвращает объект UserAuthorizationStatus с информцаией о статусе авторизаци у пользователя.
+        /// </param>
+        public void GetAuthorizationStatus(Action<RuStoreError> onFailure, Action<UserAuthorizationStatus> onSuccess) {
+            if (!IsPlatformSupported(onFailure)) return;
+
+            var listener = new UserAuthorizationStatusListener(onFailure, onSuccess);
+            _clientWrapper.Call("getAuthorizationStatus", listener);
         }
 
         /// <summary>
