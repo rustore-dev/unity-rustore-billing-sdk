@@ -68,7 +68,7 @@
 
 Дополнительная помощь и инструкции доступны в [документациии RuStore](https://www.rustore.ru/help/) и по электронной почте support@rustore.ru.
 
-[10]: https://www.rustore.ru/help/sdk/payments/unity/8-0-0
-[20]: https://www.rustore.ru/help/sdk/payments/unity/8-0-0#checkpurchasesavailability
-[30]: https://www.rustore.ru/help/sdk/payments/unity/8-0-0#getproducts
-[40]: https://www.rustore.ru/help/sdk/payments/unity/8-0-0#purchaseproduct
+[10]: https://www.rustore.ru/help/sdk/payments/unity/8-0-1
+[20]: https://www.rustore.ru/help/sdk/payments/unity/8-0-1#checkpurchasesavailability
+[30]: https://www.rustore.ru/help/sdk/payments/unity/8-0-1#getproducts
+[40]: https://www.rustore.ru/help/sdk/payments/unity/8-0-1#purchaseproduct

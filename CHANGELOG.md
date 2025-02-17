@@ -1,5 +1,9 @@
 ## История изменений
 
+### Release 8.0.1
+- Версия SDK Billing 8.0.0.
+- Добавлен метод `GetAuthorizationStatus`.
+
 ### Release 8.0.0
 - Версия SDK Billing 8.0.0.
 - Метод `CheckPurchasesAvailability` в классе `RuStoreBillingClient` помечен как устаревший.
