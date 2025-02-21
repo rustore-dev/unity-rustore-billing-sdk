@@ -8,7 +8,7 @@ namespace RuStore.BillingExample {
 
     public class ExampleController : MonoBehaviour {
 
-        public const string ExampleVersion = "8.0.0";
+        public const string ExampleVersion = "8.0.1";
 
         [SerializeField]
         private string[] _productIds;
@@ -75,22 +75,17 @@ namespace RuStore.BillingExample {
             RuStoreBillingClient.Instance.SetTheme(theme);
         }
 
-        public void CheckPurchasesAvailability() {
+        public void GetAuthorizationStatus() {
             _loadingIndicator.Show();
 
-            RuStoreBillingClient.Instance.CheckPurchasesAvailability(
+            RuStoreBillingClient.Instance.GetAuthorizationStatus(
                 onFailure: (error) => {
                     _loadingIndicator.Hide();
                     OnError(error);
                 },
                 onSuccess: (result) => {
                     _loadingIndicator.Hide();
-
-                    if (result.isAvailable) {
-                        _messageBox.Show("Availability", "True");
-                    } else {
-                        OnError(result.cause);
-                    }
+                    _messageBox.Show("Authorized", result?.authorized.ToString());
                 });
         }
 

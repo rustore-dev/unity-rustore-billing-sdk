@@ -90,6 +90,14 @@ namespace RuStore.BillingClient.Internal {
             return purchase;
         }
 
+        public static UserAuthorizationStatus ConvertUserAuthorizationStatus(AndroidJavaObject obj) {
+            if (obj == null) return null;
+
+            return new UserAuthorizationStatus() {
+                authorized = obj.Get<bool>("authorized")
+            };
+        }
+
         public static T? ConvertEnum<T>(AndroidJavaObject obj) where T : struct {
             Type type = typeof(T);
             string strValue = obj?.Call<string>("toString");

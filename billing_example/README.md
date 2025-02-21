@@ -38,11 +38,11 @@
 
 #### Сценарий использования
 
-##### Проверка доступности работы с платежами
+##### Проверка статуса авторизации у пользователя
 
-Начальный экран приложения не содержит загруженных данных и уведомлений. Тап по кнопке **Availability** выполняет [проверку доступности платежей][20].
+Начальный экран приложения не содержит загруженных данных и уведомлений. Тап по кнопке **Authorization Status** выполняет [проверку статуса авторизации][20].
 
-![Проверка доступности платежей](images/02_check_purchases_availability.png)
+![Проверка статуса авторизации](images/10_get_authorization_status.png)
 
 ##### Получение списка продуктов
 
@@ -68,7 +68,7 @@
 
 Дополнительная помощь и инструкции доступны в [документациии RuStore](https://www.rustore.ru/help/) и по электронной почте support@rustore.ru.
 
-[10]: https://www.rustore.ru/help/sdk/payments/unity/8-0-0
-[20]: https://www.rustore.ru/help/sdk/payments/unity/8-0-0#checkpurchasesavailability
-[30]: https://www.rustore.ru/help/sdk/payments/unity/8-0-0#getproducts
-[40]: https://www.rustore.ru/help/sdk/payments/unity/8-0-0#purchaseproduct
+[10]: https://www.rustore.ru/help/sdk/payments/unity/8-0-1
+[20]: https://www.rustore.ru/help/sdk/payments/unity/8-0-1#getauthorizationstatus
+[30]: https://www.rustore.ru/help/sdk/payments/unity/8-0-1#getproducts
+[40]: https://www.rustore.ru/help/sdk/payments/unity/8-0-1#purchaseproduct
