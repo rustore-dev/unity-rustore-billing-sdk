@@ -1,5 +1,8 @@
 ## История изменений
 
+### Release 9.0.1
+- Версия SDK Billing 9.0.1.
+
 ### Release 8.0.1
 - Версия SDK Billing 8.0.0.
 - Добавлен метод `GetAuthorizationStatus`.
