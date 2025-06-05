@@ -1,6 +1,6 @@
 {
   "name": "ru.rustore.billing",
-  "version": "9.0.1",
+  "version": "9.0.2",
   "displayName": "RuStore Billing",
   "description": "RuStore SDK for in-app payments",
   "unity": "2022.3",
@@ -13,7 +13,7 @@
 	"payments"
   ],
   "dependencies": {
-    "ru.rustore.core": "9.0.1"
+    "ru.rustore.core": "9.0.2"
   },
   "author": {
     "name": "RuStore",

@@ -7,8 +7,8 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel:2.5.1' // Packages/ru.rustore.core/Editor/CoreClientDependencies.xml:8
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1' // Packages/ru.rustore.core/Editor/CoreClientDependencies.xml:9
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22' // Packages/ru.rustore.billing/Editor/BillingClientDependencies.xml:10
-    implementation 'ru.rustore.sdk:billingclient:9.0.1' // Packages/ru.rustore.billing/Editor/BillingClientDependencies.xml:7
-    implementation 'ru.rustore.sdk:core:9.0.1' // Packages/ru.rustore.core/Editor/CoreClientDependencies.xml:7
+    implementation 'ru.rustore.sdk:billingclient:9.0.2' // Packages/ru.rustore.billing/Editor/BillingClientDependencies.xml:7
+    implementation 'ru.rustore.sdk:core:9.0.2' // Packages/ru.rustore.core/Editor/CoreClientDependencies.xml:7
 // Android Resolver Dependencies End
 **DEPS**}
 
