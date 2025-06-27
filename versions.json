@@ -1,6 +1,6 @@
 {
-	"sdk": "9.0.2",
-	"sdk_version_code": 90002,
-	"core": "9.0.2",
-	"core_version_code": 90002
+	"sdk": "9.1.0",
+	"sdk_version_code": 90100,
+	"core": "9.1.0",
+	"core_version_code": 90100
 }
