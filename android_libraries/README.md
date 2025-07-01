@@ -33,4 +33,4 @@
 
 Дополнительная помощь и инструкции доступны в [документации RuStore](https://www.rustore.ru/help/) и по электронной почте support@rustore.ru.
 
-[10]: https://www.rustore.ru/help/sdk/payments/unity/9-0-2
+[10]: https://www.rustore.ru/help/sdk/payments/unity/9-1-0
