@@ -1604,8 +1604,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _productIds:
-  - unity_non_con_1
-  - unity_con_2
+  - 000
+  - 100
+  - 1day
+  - 1moreday
+  - free
+  - free3
+  - start2
   productsView: {fileID: 1527957041}
   purchasesView: {fileID: 1959168379}
   _messageBox: {fileID: 310678598}
