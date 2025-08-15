@@ -1,3 +1,5 @@
+> ⚠️ Не используйте кнопку "Код → Скачать" на сайте GitFlic – этот метод не загружает файлы из Git LFS. [Инструкция по клонированию](../README_CLONE.md).
+
 ### Unity-плагин RuStore для приёма платежей через сторонние приложения
 
 #### [🔗 Документация разработчика][10]
@@ -6,19 +8,11 @@
 
 Поддерживаются версии Unity 2022+. Для установки выполните следующие действия.
 
-1. Импортируйте пакет **RuStore Core** в проект через **Package Manager** (**Window → Package Manager → __+__ → Add package from git URL...**). Для подключения используйте ссылку [https://gitflic.ru/project/rustore/unity-rustore-core-sdk.git?path=ru.rustore.core](https://gitflic.ru/project/rustore/unity-rustore-core-sdk.git?path=ru.rustore.core)
-1. Импортируйте пакет **RuStore Billing** в проект через **Package Manager** (**Window → Package Manager → __+__ → Add package from git URL...**). Для подключения используйте ссылку [https://gitflic.ru/project/rustore/unity-rustore-billing-sdk.git?path=ru.rustore.billing](https://gitflic.ru/project/rustore/unity-rustore-billing-sdk.git?path=ru.rustore.billing)
-1. Обновите зависимости проекта с помощью [**External Dependency Manager**](https://github.com/googlesamples/unity-jar-resolver.git?path=/upm) (**Assets → External Dependency Manager → Android Resolver → Force Resolve**).
-
-#### Установка External Dependency Manager
-
-**External Dependency Manager** для Android поставляется в составе пакета **RuStore Core**. Для установки выполните следующие действия.
-
-1. Откройте **RuStore Core** в окне менеджера пакетов (**Window → Package Manager → Packages RuStore → RuStore Core**).
-1. Перейдите на вкладку **Sample**.
-1. Импортируйте сэмпл **External Dependency Manager**.
-
-Вы также можете установить последнюю версию **External Dependency Manager** из официального репозитория на [GitHub](https://github.com/googlesamples/unity-jar-resolver.git?path=/upm).
+1. Выполните клонирование репозитрия пакета **RuStore Core**. [Инструкция по клонированию](https://gitflic.ru/project/rustore/unity-rustore-core-sdk/README_CLONE.md).
+1. Выполните клонирование репозитрия пакета **RuStore Billing**. [Инструкция по клонированию](../README_CLONE.md).
+1. Импортируйте пакеты из папок `ru.rustore.core` и `ru.rustore.billing` в проект через **Package Manager** (**Window → Package Manager → __+__ → Add package from disk...**).
+1. Обновите зависимости проекта с помощью [External Dependency Manager](../README_EDM.md) (**Assets → External Dependency Manager → Android Resolver → Force Resolve**).
+1. Выполните шаги раздела [Настройка проекта](../README.md).
 
 #### История изменений
 
