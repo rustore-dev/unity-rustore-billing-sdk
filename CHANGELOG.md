@@ -1,5 +1,8 @@
 ## История изменений
 
+### Release 10.0.0
+- Версия SDK Billing 10.0.0.
+
 ### Release 9.1.0
 - Версия SDK Billing 9.1.0.
 - Исправлено объявление пространства имён в Android-манифесте RuStoreSDKSettings.androidlib.

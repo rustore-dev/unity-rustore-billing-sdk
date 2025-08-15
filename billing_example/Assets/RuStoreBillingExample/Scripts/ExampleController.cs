@@ -8,7 +8,7 @@ namespace RuStore.BillingExample {
 
     public class ExampleController : MonoBehaviour {
 
-        public const string ExampleVersion = "8.0.1";
+        public const string ExampleVersion = "10.0.0";
 
         [SerializeField]
         private string[] _productIds;

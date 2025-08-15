@@ -1,6 +1,6 @@
 <dependencies>
     <androidPackages>
-        <androidPackage spec="ru.rustore.sdk:billingclient:9.1.0">
+        <androidPackage spec="ru.rustore.sdk:billingclient:10.0.0">
             <repositories>
                 <repository>https://artifactory-external.vkpartner.ru/artifactory/maven</repository>
             </repositories>

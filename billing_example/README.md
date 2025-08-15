@@ -70,7 +70,7 @@
 
 Дополнительная помощь и инструкции доступны в [документациии RuStore](https://www.rustore.ru/help/) и по электронной почте support@rustore.ru.
 
-[10]: https://www.rustore.ru/help/sdk/payments/unity/9-1-0
-[20]: https://www.rustore.ru/help/sdk/payments/unity/9-1-0#getauthorizationstatus
-[30]: https://www.rustore.ru/help/sdk/payments/unity/9-1-0#getproducts
-[40]: https://www.rustore.ru/help/sdk/payments/unity/9-1-0#purchaseproduct
+[10]: https://www.rustore.ru/help/sdk/payments/unity/10-0-0
+[20]: https://www.rustore.ru/help/sdk/payments/unity/10-0-0#getauthorizationstatus
+[30]: https://www.rustore.ru/help/sdk/payments/unity/10-0-0#getproducts
+[40]: https://www.rustore.ru/help/sdk/payments/unity/10-0-0#purchaseproduct
