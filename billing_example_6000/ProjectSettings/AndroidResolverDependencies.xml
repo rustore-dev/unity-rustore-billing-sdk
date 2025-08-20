@@ -1,0 +1,27 @@
+<dependencies>
+  <packages>
+    <package>androidx.lifecycle:lifecycle-viewmodel:2.5.1</package>
+    <package>androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1</package>
+    <package>org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22</package>
+    <package>ru.rustore.sdk:billingclient:10.0.0</package>
+    <package>ru.rustore.sdk:core:10.0.0</package>
+  </packages>
+  <files />
+  <settings>
+    <setting name="androidAbis" value="arm64-v8a,armeabi-v7a" />
+    <setting name="bundleId" value="ru.rustore.payunity" />
+    <setting name="explodeAars" value="True" />
+    <setting name="gradleBuildEnabled" value="True" />
+    <setting name="gradlePropertiesTemplateEnabled" value="True" />
+    <setting name="gradleTemplateEnabled" value="True" />
+    <setting name="installAndroidPackages" value="True" />
+    <setting name="localMavenRepoDir" value="Assets/GeneratedLocalRepo" />
+    <setting name="packageDir" value="Assets/Plugins/Android" />
+    <setting name="patchAndroidManifest" value="True" />
+    <setting name="patchMainTemplateGradle" value="True" />
+    <setting name="projectExportEnabled" value="False" />
+    <setting name="useFullCustomMavenRepoPathWhenExport" value="True" />
+    <setting name="useFullCustomMavenRepoPathWhenNotExport" value="False" />
+    <setting name="useJetifier" value="True" />
+  </settings>
+</dependencies>
