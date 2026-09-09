@@ -7,8 +7,6 @@ import ru.rustore.sdk.billingclient.RuStoreBillingClientFactory
 import ru.rustore.sdk.billingclient.presentation.BillingClientTheme
 import ru.rustore.sdk.billingclient.provider.logger.ExternalPaymentLogger
 import ru.rustore.sdk.billingclient.utils.pub.checkPurchasesAvailability
-import ru.rustore.sdk.billingclient.utils.resolveForBilling
-import ru.rustore.sdk.core.exception.RuStoreException
 import ru.rustore.sdk.core.util.RuStoreUtils
 import ru.rustore.unitysdk.billingclient.callbacks.AuthorizationStatusListener
 import ru.rustore.unitysdk.billingclient.callbacks.ConfirmPurchaseListener
@@ -22,46 +20,15 @@ import ru.rustore.unitysdk.core.PlayerProvider
 
 object RuStoreUnityBillingClient {
 
-	private var allowErrorHandling: Boolean = false
 	private lateinit var billingClient: RuStoreBillingClient
 	private var isInitialized: Boolean = false
-
-	fun setErrorHandling(allowErrorHandling: Boolean) {
-		this.allowErrorHandling = allowErrorHandling
-	}
-
-	fun getErrorHandling() : Boolean {
-		return allowErrorHandling
-	}
 
 	fun init(consoleApplicationId: String, deeplinkScheme: String, enableLogs: Boolean, metricType: String) {
 		init(
 			consoleApplicationId = consoleApplicationId,
 			deeplinkScheme = deeplinkScheme,
-			allowErrorHandling = false,
 			enableLogs = enableLogs,
 			metricType = metricType
-		)
-	}
-
-	@Deprecated(
-		message = "This method is deprecated. Use init(consoleApplicationId: String, deeplinkScheme: String, enableLogs: Boolean, metricType: String) instead.",
-		replaceWith = ReplaceWith("init(consoleApplicationId: String, deeplinkScheme: String, enableLogs: Boolean, metricType: String)"),
-		level = DeprecationLevel.WARNING
-	)
-	fun init(consoleApplicationId: String, deeplinkScheme: String, allowErrorHandling: Boolean, enableLogs: Boolean, metricType: String) {
-		if (isInitialized) return
-
-		this.allowErrorHandling = allowErrorHandling
-
-		billingClient = RuStoreBillingClientFactory.create(
-				context = PlayerProvider.getCurrentActivity().application,
-				consoleApplicationId = consoleApplicationId,
-				deeplinkScheme = deeplinkScheme,
-				themeProvider = RuStoreBillingClientThemeProviderImpl,
-				debugLogs = enableLogs,
-				externalPaymentLoggerFactory = { tag -> BillingClientLogger(tag) },
-				internalConfig = mapOf("type" to metricType)
 		)
 
 		isInitialized = true;
@@ -73,11 +40,7 @@ object RuStoreUnityBillingClient {
 		val unityApp = PlayerProvider.getCurrentActivity().application
 		val consoleAppId = unityApp.resources.getIdentifier("rustore_BillingClientSettings_consoleApplicationId", "string", unityApp.packageName)
 		val deeplinkScheme = unityApp.resources.getIdentifier("rustore_BillingClientSettings_deeplinkScheme", "string", unityApp.packageName)
-
 		val enableLogs = unityApp.resources.getIdentifier("rustore_BillingClientSettings_enableLogs", "string", unityApp.packageName)
-		val allowNativeErrorHandling = unityApp.resources.getIdentifier("rustore_BillingClientSettings_allowNativeErrorHandling", "string", unityApp.packageName)
-
-		this.allowErrorHandling = unityApp.getString(allowNativeErrorHandling).toBoolean()
 
 		billingClient = RuStoreBillingClientFactory.create(
 			context = unityApp,
@@ -97,7 +60,6 @@ object RuStoreUnityBillingClient {
 		RuStoreBillingClient.checkPurchasesAvailability()
 			.addOnSuccessListener { result -> listener.OnSuccess(result) }
 			.addOnFailureListener { throwable ->
-				handleError(throwable)
 				listener.OnFailure(throwable)
 			}
 	}
@@ -113,7 +75,6 @@ object RuStoreUnityBillingClient {
 				listener.OnSuccess(result)
 			}
 			.addOnFailureListener { throwable ->
-				handleError(throwable)
 				listener.OnFailure(throwable)
 			}
 	}
@@ -122,7 +83,6 @@ object RuStoreUnityBillingClient {
 		billingClient.products.getProducts(productIds = productIds.asList())
 			.addOnSuccessListener { result -> listener.OnSuccess(result) }
 			.addOnFailureListener { throwable ->
-				handleError(throwable)
 				listener.OnFailure(throwable)
 			}
 	}
@@ -131,7 +91,6 @@ object RuStoreUnityBillingClient {
 		billingClient.purchases.getPurchases()
 			.addOnSuccessListener { result -> listener.OnSuccess(result) }
 			.addOnFailureListener { throwable ->
-				handleError(throwable)
 				listener.OnFailure(throwable)
 			}
 	}
@@ -140,7 +99,6 @@ object RuStoreUnityBillingClient {
 		billingClient.purchases.getPurchaseInfo(purchaseId)
 			.addOnSuccessListener { result -> listener.OnSuccess(result) }
 			.addOnFailureListener { throwable ->
-				handleError(throwable)
 				listener.OnFailure(throwable)
 			}
 	}
@@ -163,7 +121,6 @@ object RuStoreUnityBillingClient {
 		billingClient.purchases.confirmPurchase(purchaseId = purchaseId)
 			.addOnSuccessListener { listener.OnSuccess() }
 			.addOnFailureListener { throwable ->
-				handleError(throwable)
 				listener.OnFailure(throwable)
 			}
 	}
@@ -172,7 +129,6 @@ object RuStoreUnityBillingClient {
 		billingClient.purchases.deletePurchase(purchaseId = purchaseId)
 			.addOnSuccessListener { listener.OnSuccess() }
 			.addOnFailureListener { throwable ->
-				handleError(throwable)
 				listener.OnFailure(throwable)
 			}
 	}
@@ -182,12 +138,6 @@ object RuStoreUnityBillingClient {
 	}
 
 	fun getThemeCode(): Int = RuStoreBillingClientThemeProviderImpl.getTheme().ordinal
-
-	private fun handleError(throwable: Throwable) {
-		if (allowErrorHandling && throwable is RuStoreException) {
-			throwable.resolveForBilling(PlayerProvider.getCurrentActivity())
-		}
-	}
 
 	@JvmStatic
 	fun onNewIntent(intent: Intent) {

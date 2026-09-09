@@ -13,7 +13,7 @@ namespace RuStore.BillingClient {
         /// <summary>
         /// Версия плагина.
         /// </summary>
-        public static string PluginVersion = "10.0.0";
+        public static string PluginVersion = "10.5.0";
 
         private static RuStoreBillingClient _instance;
         private static bool _isInstanceInitialized;
@@ -26,12 +26,11 @@ namespace RuStore.BillingClient {
         public bool IsInitialized => _isInitialized;
         private AndroidJavaObject _clientWrapper;
 
-        private bool _allowNativeErrorHandling;
-
         /// <summary>
         /// Возвращает единственный экземпляр RuStoreBillingClient (реализация паттерна Singleton).
         /// Если экземпляр еще не создан, создает его.
         /// </summary>
+        /// <example>@include public_static_RuStoreBillingClient_Instance.cs</example>
         public static RuStoreBillingClient Instance {
             get {
                 if (!_isInstanceInitialized) {
@@ -39,24 +38,6 @@ namespace RuStore.BillingClient {
                     _instance = new RuStoreBillingClient();
                 }
                 return _instance;
-            }
-        }
-
-        /// <summary>
-        /// Обработка ошибок в нативном SDK.
-        /// true — разрешает обработку ошибок, false — запрещает.
-        /// </summary>
-        [Obsolete("This field is deprecated. Error handling must be performed on the application side.")]
-        public bool AllowNativeErrorHandling {
-            get {
-                return _allowNativeErrorHandling;
-            }
-            set {
-                _allowNativeErrorHandling = value;
-
-                if (_isInitialized) {
-                    _clientWrapper.Call("setErrorHandling", value);
-                }
             }
         }
 
@@ -72,6 +53,7 @@ namespace RuStore.BillingClient {
         /// Содержит параметры инициализации платежного клиента.
         /// </param>
         /// <returns>Возвращает true, если инициализация была успешно выполнена, в противном случае — false.</returns>
+        /// <example>@include public_bool_Init_RuStoreBillingClientConfig_config.cs</example>
         public bool Init(RuStoreBillingClientConfig config) {
             if (_isInitialized) {
                 Debug.LogError("Error: RuStore Billing Client is already initialized");
@@ -82,11 +64,9 @@ namespace RuStore.BillingClient {
                 return false;
             }
 
-            _allowNativeErrorHandling = config.allowNativeErrorHandling;
-
             InitWrapper();
 
-            _clientWrapper.Call("init", config.consoleApplicationId, config.deeplinkScheme, config.allowNativeErrorHandling, config.enableLogs, "unity");
+            _clientWrapper.Call("init", config.consoleApplicationId, config.deeplinkScheme, config.enableLogs, "unity");
             _isInitialized = true;
 
             return true;
@@ -98,6 +78,7 @@ namespace RuStore.BillingClient {
         /// Для создания файла BillingClientSettings.asset выберите в меню редактора Unity пункт Window → RuStoreSDK → Settings → Billing Client.
         /// </summary>
         /// <returns>Возвращает true, если инициализация была успешно выполнена, в противном случае — false.</returns>
+        /// <example>@include public_bool_Init.cs</example>
         public bool Init() {
             if (_isInitialized) {
                 Debug.LogError("Error: RuStore Billing Client is already initialized");
@@ -112,8 +93,6 @@ namespace RuStore.BillingClient {
 
             _clientWrapper.Call("init");
             _isInitialized = true;
-
-            _allowNativeErrorHandling = _clientWrapper.Call<bool>("getErrorHandling");
 
             return true;
         }
@@ -131,6 +110,7 @@ namespace RuStore.BillingClient {
         /// Действие, выполняемое при успешном завершении операции.
         /// Возвращает объект RuStore.FeatureAvailabilityResult с информцаией о доступности оплаты.
         /// </param>
+        /// <example>@include public_void_CheckPurchasesAvailability.cs</example>
         [Obsolete("This method is deprecated. This method only works for flows with an authorized user in RuStore.")]
         public void CheckPurchasesAvailability(Action<RuStoreError> onFailure, Action<PurchaseAvailabilityResult> onSuccess) {
             if (!IsPlatformSupported(onFailure)) {
@@ -145,6 +125,7 @@ namespace RuStore.BillingClient {
         /// Проверка установлен ли на устройстве пользователя RuStore.
         /// </summary>
         /// <returns>Возвращает true, если RuStore установлен, в противном случае — false.</returns>
+        /// <example>@include public_bool_IsRuStoreInstalled.cs</example>
         public bool IsRuStoreInstalled() {
             if (!IsPlatformSupported()) {
                 return false;
@@ -164,6 +145,7 @@ namespace RuStore.BillingClient {
         /// Действие, выполняемое при успешном завершении операции.
         /// Возвращает объект UserAuthorizationStatus с информцаией о статусе авторизаци у пользователя.
         /// </param>
+        /// <example>@include public_void_GetAuthorizationStatus.cs</example>
         public void GetAuthorizationStatus(Action<RuStoreError> onFailure, Action<UserAuthorizationStatus> onSuccess) {
             if (!IsPlatformSupported(onFailure)) return;
 
@@ -184,6 +166,7 @@ namespace RuStore.BillingClient {
         /// Действие, выполняемое при успешном завершении операции.
         /// Возвращает список объектов RuStore.BillingClient.Product с информцаией о продуктах.
         /// </param>
+        /// <example>@include public_void_GetProducts.cs</example>
         public void GetProducts(string[] productIds, Action<RuStoreError> onFailure, Action<List<Product>> onSuccess) {
             if (!IsPlatformSupported(onFailure)) {
                 return;
@@ -204,6 +187,7 @@ namespace RuStore.BillingClient {
         /// Действие, выполняемое при успешном завершении операции.
         /// Возвращает список объектов RuStore.BillingClient.Purchase с информцаией о покупках.
         /// </param>
+        /// <example>@include public_void_GetPurchases.cs</example>
         public void GetPurchases(Action<RuStoreError> onFailure, Action<List<Purchase>> onSuccess) {
             if (!IsPlatformSupported(onFailure)) {
                 return;
@@ -227,6 +211,7 @@ namespace RuStore.BillingClient {
         /// Действие, выполняемое при успешном завершении операции.
         /// Возвращает объект RuStore.BillingClient.Purchase с информцаией о покупке.
         /// </param>
+        /// <example>@include public_void_GetPurchaseInfo.cs</example>
         public void GetPurchaseInfo(string purchaseId, Action<RuStoreError> onFailure, Action<Purchase> onSuccess) {
             if (!IsPlatformSupported(onFailure)) {
                 return;
@@ -250,6 +235,7 @@ namespace RuStore.BillingClient {
         /// Действие, выполняемое при успешном завершении операции.
         /// Возвращает объект RuStore.BillingClient.PaymentResult с информцаией о результате покупки.
         /// </param>
+        /// <example>@include public_void_PurchaseProduct.cs</example>
         public void PurchaseProduct(string productId, int quantity, string developerPayload, Action<RuStoreError> onFailure, Action<PaymentResult> onSuccess) {
             if (!IsPlatformSupported(onFailure)) {
                 return;
@@ -279,6 +265,7 @@ namespace RuStore.BillingClient {
         /// Действие, выполняемое при успешном завершении операции.
         /// Возвращает объект RuStore.BillingClient.PaymentResult с информцаией о текущем наборе данных.
         /// </param>
+        /// <example>@include public_void_PurchaseProduct_string_orderId.cs</example>
         public void PurchaseProduct(string productId, string orderId, int quantity, string developerPayload, Action<RuStoreError> onFailure, Action<PaymentResult> onSuccess) {
             if (!IsPlatformSupported(onFailure)) {
                 return;
@@ -298,6 +285,7 @@ namespace RuStore.BillingClient {
         /// Возвращает объект RuStore.RuStoreError с информацией об ошибке.
         /// </param>
         /// <param name="onSuccess">Действие, выполняемое при успешном завершении операции.</param>
+        /// <example>@include public_void_ConfirmPurchase.cs</example>
         public void ConfirmPurchase(string purchaseId, Action<RuStoreError> onFailure, Action onSuccess) {
             if (!IsPlatformSupported(onFailure)) {
                 return;
@@ -316,6 +304,7 @@ namespace RuStore.BillingClient {
         /// Возвращает объект RuStore.RuStoreError с информацией об ошибке.
         /// </param>
         /// <param name="onSuccess">Действие, выполняемое при успешном завершении операции.</param>
+        /// <example>@include public_void_DeletePurchase.cs</example>
         public void DeletePurchase(string purchaseId, Action<RuStoreError> onFailure, Action onSuccess) {
             if (!IsPlatformSupported(onFailure)) {
                 return;
@@ -330,6 +319,7 @@ namespace RuStore.BillingClient {
         /// Установить тему интерфейса.
         /// </summary>
         /// <param name="theme">Новая тема, заданная значением из перечисления RuStore.BillingClient.BillingClientTheme.</param>
+        /// <example>@include public_void_SetTheme.cs</example>
         public void SetTheme(BillingClientTheme theme) {
             if (!IsPlatformSupported((error) => { })) {
                 return;
@@ -343,6 +333,7 @@ namespace RuStore.BillingClient {
         /// Получить текущую тему интерфейса.
         /// </summary>
         /// <returns>Текущая тема, заданная значением из перечисления RuStore.BillingClient.BillingClientTheme.</returns>
+        /// <example>@include public_BillingClientTheme_GetTheme.cs</example>
         public BillingClientTheme GetTheme() {
             if (!IsPlatformSupported((error) => { })) {
                 return BillingClientTheme.Light;
@@ -353,6 +344,8 @@ namespace RuStore.BillingClient {
 
         private void InitWrapper() {
             CallbackHandler.InitInstance();
+            ActivityInstaller.Instance.Install();
+
             using (var clientJavaClass = new AndroidJavaClass("ru.rustore.unitysdk.billingclient.RuStoreUnityBillingClient")) {
                 _clientWrapper = clientJavaClass.GetStatic<AndroidJavaObject>("INSTANCE");
             }

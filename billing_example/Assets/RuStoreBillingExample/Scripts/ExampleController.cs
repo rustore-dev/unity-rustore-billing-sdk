@@ -8,7 +8,10 @@ namespace RuStore.BillingExample {
 
     public class ExampleController : MonoBehaviour {
 
-        public const string ExampleVersion = "10.0.0";
+        public const string ExampleVersion = "10.3.1";
+
+        [SerializeField]
+        private string _logTag;
 
         [SerializeField]
         private string[] _productIds;
@@ -28,12 +31,16 @@ namespace RuStore.BillingExample {
         [SerializeField]
         private Text isRuStoreInstalledLabel;
 
+        [SerializeField]
+        private ProductInfoBox _productInfoBox;
+
         private void Awake() {
             RuStoreBillingClient.Instance.Init();
         }
 
         private void Start() {
             ProductCardView.OnBuyProduct += ProductCardView_OnBuyProduct;
+            ProductCardView.OnInfoProduct += ProductCardView_OnInfoProduct;
 
             PurchaseCardView.OnConfirmPurchase += PurchaseCardView_OnConfirmPurchase;
             PurchaseCardView.OnDeletePurchase += PurchaseCardView_OnDeletePurchase;
@@ -42,6 +49,15 @@ namespace RuStore.BillingExample {
             var isRuStoreInstalled = RuStoreBillingClient.Instance.IsRuStoreInstalled();
             var message = isRuStoreInstalled ? "RuStore is installed [v]" : "RuStore is not installed [x]";
             isRuStoreInstalledLabel.text = message;
+        }
+
+        private void ProductCardView_OnInfoProduct(object sender, EventArgs e) {
+            var product = (sender as ICardView<Product>).GetData();
+
+            var json = DataSerializer.SerializeToJson(product, true);
+            Logcat.LogWarning(_logTag, json);
+
+            _productInfoBox.Show(product);
         }
 
         private void ProductCardView_OnBuyProduct(object sender, EventArgs e) {
@@ -103,6 +119,8 @@ namespace RuStore.BillingExample {
                 },
                 onSuccess: (result) => {
                     _loadingIndicator.Hide();
+
+                    result.Sort((p1, p2) => p1.productId.CompareTo(p2.productId));
                     productsView.SetData(result);
                 });
         }

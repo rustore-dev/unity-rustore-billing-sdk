@@ -1,3 +1,6 @@
+# Build output (doxygen, doxybook2, wiki)
+build/
+
 # OS generated
 .DS_Store
 .DS_Store?

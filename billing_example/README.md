@@ -1,3 +1,33 @@
+<!-- ── Language switch (RU active) ──────────────────────────────────── -->
+<div align="left" style="margin:0 0 14px 0;">
+
+  <span style="display:inline-block;
+               padding:.28rem .6rem;
+               border:1px solid rgba(0,0,0,.18);
+               border-radius:10px 0 0 10px;
+               font-weight:400;
+               font-size:12px;
+               letter-spacing:.06em;
+               color:#111827;
+               background:linear-gradient(180deg,#e9edf2,#ffffff);
+               box-shadow:inset 0 2px 6px rgba(0,0,0,.10);">
+    RU
+  </span><span style="display:inline-block;
+               margin-left:-1px;
+               padding:.28rem .6rem;
+               border:1px solid rgba(0,0,0,.14);
+               border-radius:0 10px 10px 0;
+               font-weight:400;
+               font-size:12px;
+               letter-spacing:.06em;
+               background:linear-gradient(180deg,#ffffff,#f3f4f6);
+               box-shadow:0 1px 0 rgba(0,0,0,.06);">
+    [EN][en]
+  </span>
+
+</div>
+<!-- ────────────────────────────────────────────────────────────────── -->
+
 > ⚠️ Не используйте кнопку "Код → Скачать" на сайте GitFlic – этот метод не загружает файлы из Git LFS. [Инструкция по клонированию](../README_CLONE.md).
 
 ### Unity-плагин RuStore для приёма платежей через сторонние приложения
@@ -13,7 +43,7 @@
 
 > ⚠️ Сервис имеет ограничения на работу за пределами РФ.
 
-Поддерживаются версии Unity 2022+.
+Поддерживаются версии Unity 6000+.
 
 #### Подготовка требуемых параметров
 
@@ -30,6 +60,7 @@
 Для проверки работы приложения вы можете воспользоваться функциональностью [тестовых платежей](https://www.rustore.ru/help/developers/monetization/sandbox).
 
 1. Откройте проект **Unity** из папки `billing_example`.
+1. Откройте сцену **BillingClientSampleScene** из папки `Assets / RuStoreBillingExample / Scenes`.
 1. Откройте настройки **RuStore Billing SDK** (**Window → RuStoreSDK → Settings → BillingClient**).
 1. В поле **Console Application Id** укажите значение `consoleApplicationId` — код приложения из консоли разработчика RuStore.
 1. В поле **Deeplink Scheme** укажите значение `deeplinkScheme` — URL-адрес для использования deeplink.
@@ -70,7 +101,9 @@
 
 Дополнительная помощь и инструкции доступны в [документациии RuStore](https://www.rustore.ru/help/) и по электронной почте support@rustore.ru.
 
-[10]: https://www.rustore.ru/help/sdk/payments/unity/10-0-0
-[20]: https://www.rustore.ru/help/sdk/payments/unity/10-0-0#getauthorizationstatus
-[30]: https://www.rustore.ru/help/sdk/payments/unity/10-0-0#getproducts
-[40]: https://www.rustore.ru/help/sdk/payments/unity/10-0-0#purchaseproduct
+[10]: https://www.rustore.ru/help/sdk/payments/unity/10-5-0
+[20]: https://www.rustore.ru/help/sdk/payments/unity/10-5-0#getauthorizationstatus
+[30]: https://www.rustore.ru/help/sdk/payments/unity/10-5-0#getproducts
+[40]: https://www.rustore.ru/help/sdk/payments/unity/10-5-0#purchaseproduct
+
+[en]: README.en.md

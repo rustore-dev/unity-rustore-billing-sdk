@@ -28,6 +28,7 @@ namespace RuStore.BillingExample.UI {
         private Text productPrice;
 
         public static event EventHandler OnBuyProduct;
+        public static event EventHandler OnInfoProduct;
 
         private Product product = null;
 
@@ -49,6 +50,10 @@ namespace RuStore.BillingExample.UI {
 
         public void BuyProduct() {
             OnBuyProduct?.Invoke(this, EventArgs.Empty);
+        }
+
+        public void InfoProduct() {
+            OnInfoProduct?.Invoke(this, EventArgs.Empty);
         }
 
         IEnumerator LoadImage(string url) {
