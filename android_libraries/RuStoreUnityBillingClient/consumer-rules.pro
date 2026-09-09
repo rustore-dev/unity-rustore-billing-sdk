@@ -1,0 +1,2 @@
+-keep class ru.rustore.unitysdk.billingclient.** { *; }
+-keep interface ru.rustore.unitysdk.billingclient.** { *; }

@@ -1,0 +1,1 @@
+var theme = RuStoreBillingClient.Instance.GetTheme();

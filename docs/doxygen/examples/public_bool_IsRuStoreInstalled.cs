@@ -1,0 +1,1 @@
+bool isRuStoreInstalled = RuStoreBillingClient.Instance.IsRuStoreInstalled();

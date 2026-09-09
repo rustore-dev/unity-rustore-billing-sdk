@@ -8,7 +8,6 @@ namespace RuStore.Editor {
         [Header("Billing Client SDK")]
         public string consoleApplicationId;
         public string deeplinkScheme;
-        public bool allowNativeErrorHandling;
         public bool enableLogs;
 
         [MenuItem("Window/RuStoreSDK/Settings/BillingClient")]

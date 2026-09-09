@@ -7,6 +7,9 @@ namespace RuStore.BillingExample.UI {
         [SerializeField]
         private GameObject prefab;
 
+        [SerializeField]
+        private Transform content;
+
         private GameObject[] items = { };
 
         public void SetData<T>(List<T> data) {
@@ -17,8 +20,10 @@ namespace RuStore.BillingExample.UI {
             var index = 0;
             items = new GameObject[data.Count];
 
+            if (content == null) content = transform;
+
             foreach (var d in data) {
-                var view = items[index++] = Instantiate(prefab, transform).gameObject;
+                var view = items[index++] = Instantiate(prefab, content).gameObject;
 
                 view.GetComponent<ICardView<T>>().SetData(d);
             }

@@ -1,0 +1,1 @@
+RuStoreBillingClient.Instance.SetTheme(BillingClientTheme.Dark);

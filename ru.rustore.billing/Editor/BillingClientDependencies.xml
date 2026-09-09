@@ -1,12 +1,10 @@
 <dependencies>
-    <androidPackages>
-        <androidPackage spec="ru.rustore.sdk:billingclient:10.0.0">
-            <repositories>
-                <repository>https://artifactory-external.vkpartner.ru/artifactory/maven</repository>
-            </repositories>
-        </androidPackage>
-        <androidPackage spec="androidx.lifecycle:lifecycle-viewmodel:2.5.1" />
-        <androidPackage spec="androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1" />
-        <androidPackage spec="org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22" />
-    </androidPackages>
+  <androidPackages>
+    <androidPackage spec='ru.rustore.sdk:billingclient:10.5.0'>
+      <repositories>
+        <repository>https://artifactory-external.vkpartner.ru/artifactory/maven-rustore-exposed</repository>
+      </repositories>
+    </androidPackage>
+    <androidPackage spec='org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.2.21' />
+  </androidPackages>
 </dependencies>
